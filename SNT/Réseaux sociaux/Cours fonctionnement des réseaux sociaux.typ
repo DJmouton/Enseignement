@@ -1,8 +1,10 @@
-#import "/Typst templates/style.typ": template, frame, définition, remarque, exercice, exemple, studentline, algorithme, TODO, titre
+#import "/Typst templates/style.typ": template, frame, définition, remarque, exercice, exemple, studentline, algorithme, TODO, titre, surtitre
 
 #import "@preview/cetz:0.2.2"
 
 #show: doc => template(doc)
+
+#surtitre[SNT - Réseaux Sociaux - Partie 1]
 #titre[Fonctionnement des Réseaux Sociaux]
 
 #let repères_historiques = frame(
@@ -60,7 +62,7 @@
     let rayon = calc.sqrt(utilisateurs / 3.14) * ratio_bulle
     let taille_texte = rayon * ratio_texte * 1pt
 
-    circle(position, radius: rayon, stroke: 1pt, fill: couleur_bulle, name: nom)
+    circle(position, radius: rayon, stroke: 1pt, fill: couleur_bulle.luma(), name: nom)
 
     content((nom, taille_texte * distance_nom_utilisateurs, nom + ".north"), text(size: taille_texte, fill: couleur_texte, [*#nom*]))
 
@@ -101,3 +103,45 @@
     Les entreprises de réseaux sociaux génèrent plus de la moitié de leurs revenus grâce à la publicité. La revente de données, l'intégration de jeux en ligne ou encore d'applications génèrent également des revenus. Des algorithmes proposent en outre des *publicités ciblées* selon les relations de l'abonné, ses goûts, ses opinions, son âge, etc.
   ]
 )
+
+= Résumé
+
+#frame(
+  title: "Définitions à connaître",
+  body: [
+    
+    - Un *réseau social* rassemble des personnes physiques ou morales, mises en relation par l'intermédiaire d'une application dédiée. La connexion à un réseau social s'effectue depuis toute machine connectée à Internet: ordinateur, smartphone, tablette, etc.
+    - Un *abonné actif* est un abonné se connectant régulièrement au réseau social.
+    - L'*identité numérique* est l'ensemble des traces numériques qu'une personne ou une collectivité laisse sur le Web, comme ses coordonnées ou ses goûts.
+    - Le *processus d'authentification* permet l'accès individualisé à un réseau à l'aide d'un _login_ et d'un mot de passe.
+  ]
+)
+
+#frame(
+  title: "Ce qu'il faut retenir",
+  body: [
+    #set list(marker: [#sym.square])
+    Il faut être capable de :
+    - définir les termes suivants : réseau social, identité numérique
+    - distinguer plusieurs réseaux sociaux selon leur caractéristiques
+    - identifier les sources de revenu d'une entreprise du réseautage social
+    - expliquer la notion : "Quand c'est gratuit, c'est vous le produit"
+    - comprendre que le paramétrage d'un abonnement influe sur la confidentialité des données personnelles
+  ]
+)
+
+#pagebreak(weak: true)
+
+#surtitre[SNT - Réseaux Sociaux - Partie 2]
+#titre[Cyberviolence]
+
+#frame(
+  title: "L'essentiel",
+  body: [
+    Sur le Web, la violence prend des formes variées : 
+    - divulgation de photos publiées sans autorisation ou encore modifiées intentionnellement; 
+    - diffusion d'images à caractère pornographique;
+  ]
+)
+
+= Agir contre la cyberviolence

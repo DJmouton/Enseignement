@@ -38,7 +38,7 @@
     //leading: 1.5em,
   )
   
-  set heading(numbering: "1.1.1.")
+  //set heading(numbering: "1.1.1.")
   //show heading: set block(above: 2em, below: 1.2em)
   set text(
     font: "",
@@ -159,7 +159,10 @@
 
 #let titre(body) = align(center, text(size: 24pt, smallcaps(body)))
 
-
+#let surtitre(body) = [
+  #align(center, text(size: 14pt, smallcaps(body)))
+  #v(-1.5em)
+]
 
 
 
