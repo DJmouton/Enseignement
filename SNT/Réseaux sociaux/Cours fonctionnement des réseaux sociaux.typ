@@ -1,4 +1,4 @@
-#import "/Typst templates/style.typ": template, frame, définition, remarque, exercice, exemple, studentline, algorithme, TODO, titre, surtitre
+#import "/Typst templates/style.typ": template, frame, titre, surtitre
 
 #import "@preview/cetz:0.2.2"
 
@@ -46,7 +46,7 @@
   title: "L'essentiel",
   body: [
     Contrairement à un *réseau informatique*, composé de machines connectées physiquement entre elles, un *réseau social* met en relation des personnes (grâce à des liens d'"amitié") ou encore des entreprises (mise en relation avec le client) de façon virtuelle. 
-    Grâce à des applications dédiées, les usager échangent toutes sortes de contenus numériques: messages, photos, vidéos, sons, etc.
+    Grâce à des applications dédiées, les usager échangent toutes sortes de contenus numériques: messages, photos, vidéos, sons, ²xetc.
   ]
 )
 
@@ -95,6 +95,24 @@
   ]
 )
 
+/*
+#let figure_identité_numérique = align(center, cetz.canvas({
+  import cetz.draw: line, content
+
+  content((0, 0), text(size: 50pt, "🧑"))
+
+  let partie(arrivée, orientation: 1, texte, sous_texte) = {
+    line((0, 0), (1, 10))
+  }
+
+}))
+
+#figure(
+  caption: "Juste un mec",
+  figure_identité_numérique
+)
+*/
+
 = Modèle économique des réseaux sociaux
 
 #frame(
@@ -113,10 +131,12 @@
     - Un *réseau social* rassemble des personnes physiques ou morales, mises en relation par l'intermédiaire d'une application dédiée. La connexion à un réseau social s'effectue depuis toute machine connectée à Internet: ordinateur, smartphone, tablette, etc.
     - Un *abonné actif* est un abonné se connectant régulièrement au réseau social.
     - L'*identité numérique* est l'ensemble des traces numériques qu'une personne ou une collectivité laisse sur le Web, comme ses coordonnées ou ses goûts.
+    - L'*e-réputation* (ou web-réputation) est la notoriété associée à une identité numérique. Elle peut renvoyer une image positive ou négative de cette identité.
     - Le *processus d'authentification* permet l'accès individualisé à un réseau à l'aide d'un _login_ et d'un mot de passe.
   ]
 )
 
+/*
 #frame(
   title: "Ce qu'il faut retenir",
   body: [
@@ -129,19 +149,4 @@
     - comprendre que le paramétrage d'un abonnement influe sur la confidentialité des données personnelles
   ]
 )
-
-#pagebreak(weak: true)
-
-#surtitre[SNT - Réseaux Sociaux - Partie 2]
-#titre[Cyberviolence]
-
-#frame(
-  title: "L'essentiel",
-  body: [
-    Sur le Web, la violence prend des formes variées : 
-    - divulgation de photos publiées sans autorisation ou encore modifiées intentionnellement; 
-    - diffusion d'images à caractère pornographique;
-  ]
-)
-
-= Agir contre la cyberviolence
+*/
