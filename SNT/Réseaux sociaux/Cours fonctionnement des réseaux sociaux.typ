@@ -95,23 +95,53 @@
   ]
 )
 
-/*
+
 #let figure_identité_numérique = align(center, cetz.canvas({
   import cetz.draw: line, content
 
-  content((0, 0), text(size: 50pt, "🧑"))
+  content((0, 0), text(size: 50pt, emoji.person))
 
-  let partie(arrivée, orientation: 1, texte, sous_texte) = {
-    line((0, 0), (1, 10))
-  }
+  line((-1, 0.4), (-1.5, 0.4), (-1.5, 2), (-3, 2))
+  line((-1, 0.2), (-1.7, 0.2), (-1.7, 1), (-3, 1))
+  line((-1, 0), (-3, 0))
+  line((-1, -0.2), (-1.7, -0.2), (-1.7, -1), (-3, -1))
+  line((-1, -0.4), (-1.5, -0.4), (-1.5, -2), (-3, -2))
+
+  line((+1, 0.4), (+1.5, 0.4), (+1.5, 2), (+3, 2))
+  line((+1, 0.2), (+1.7, 0.2), (+1.7, 1), (+3, 1))
+  line((+1, 0), (+3, 0))
+  line((+1, -0.2), (+1.7, -0.2), (+1.7, -1), (+3, -1))
+  line((+1, -0.4), (+1.5, -0.4), (+1.5, -2), (+3, -2))
+
+  content((-4, 2.2), align(right, text(size: 10pt, weight: "bold","Réputation")))
+  content((-4.7, 1.8), text(size: 8pt,"ce que l'on dit sur moi"))
+  content((-4, 1.2), align(right, text(size: 10pt, weight: "bold","Expression")))
+  content((-4.7, 0.8), text(size: 8pt,"ce que je dis"))
+  content((-4, 0.2), align(right, text(size: 10pt, weight: "bold","Réseau")))
+  content((-4.7, -0.2), text(size: 8pt,"qui je connais"))
+  content((-4, -0.8), align(right, text(size: 10pt, weight: "bold","Certification")))
+  content((-4.7, -1.2), text(size: 8pt,"qui peut certifier mon identité"))
+  content((-4, -1.8), align(right, text(size: 10pt, weight: "bold","Achat")))
+  content((-4.7, -2.2), text(size: 8pt,"ce que j'achète"))
+
+  content((+4, 2.2), align(right, text(size: 10pt, weight: "bold","Opinion")))
+  content((+4.7, 1.8), text(size: 8pt,"ce que je pense"))
+  content((+4, 1.2), align(right, text(size: 10pt, weight: "bold","Savoir")))
+  content((+4.7, 0.8), text(size: 8pt,"ce que je sais"))
+  content((+4, 0.2), align(right, text(size: 10pt, weight: "bold","Hobbies")))
+  content((+4.7, -0.2), text(size: 8pt,"ce que j'aime"))
+  content((+4, -0.8), align(right, text(size: 10pt, weight: "bold","Avatar")))
+  content((+4.7, -1.2), text(size: 8pt,"comment je me montre"))
+  content((+4, -1.8), align(right, text(size: 10pt, weight: "bold","Profession")))
+  content((+4.7, -2.2), text(size: 8pt,"quel est mon métier et où je travaille"))
 
 }))
 
 #figure(
-  caption: "Juste un mec",
+  caption: "Les parties de l'identité numérique.",
   figure_identité_numérique
 )
-*/
+
 
 = Modèle économique des réseaux sociaux
 
