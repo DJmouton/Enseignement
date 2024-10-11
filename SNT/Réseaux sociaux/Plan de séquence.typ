@@ -31,7 +31,7 @@ Les secondes de Champollion ont 1h de SNT une semaine sur deux et 2h l'autre sem
 
 #let phase_séance(nom, objectifs, durée, contenu, supports) = arguments(nom, objectifs, durée, contenu, supports)
 
-#let début_séance = phase_séance("Début de cours", "/", "5-10m", "Arrivé en classe, appel et questions flash", "Tableau")
+#let début_séance = phase_séance("Début de cours", "/", "5-10m", "Arrivé en classe, appel et questions flash/quiz", "Tableau")
 
 #let fin_séance = phase_séance("Fin de cours", "/", "5m", "Récap de la séance, questions et devoirs", "/")
 
@@ -72,11 +72,17 @@ Les secondes de Champollion ont 1h de SNT une semaine sur deux et 2h l'autre sem
   ..fin_séance
 )
 == Séance 4 (1h): Activité notée
-
+#planning_séance(
+  ..début_séance,
+  ..phase_séance("Activité représentation mathématique d'un réseau social", "D, T1", "45m", "Activité avec une matrice d'adjacence, de l'algorithmie et de la programmation. L'activité est ramassée et notée.", "PC, fichier source, IDE"),
+  ..fin_séance
+)
 
 = Évaluations
+[ TODO ]
+== Quiz fonctionnement
 
-== Quiz fonctionnement et cyberviolence
+== Quiz cyberviolence
 
 == Quiz modélisation
 

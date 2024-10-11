@@ -2,11 +2,13 @@
 
 #show: doc => template(doc)
 
+#let pointillets = [#v(0.8em) #move(dy: 0.2em ,line(length: 100%, stroke: (dash: "dotted")))]
 
-#surtitre[SNT - Réseaux Sociaux - Activité]
+#surtitre[SNT - Réseaux Sociaux - Activité 1]
 #titre[Charactéristiques et revenus #linebreak() des réseaux sociaux]
 
-#let pointillets = [#v(0.8em) #move(dy: 0.2em ,line(length: 100%, stroke: (dash: "dotted")))]
+En 2024, environ 50,7 millions de Français étaient actifs sur les réseaux sociaux. Un utilisateur y passe en moyenne 1h48 chaque jour ! Voici 9 réseaux sociaux parmi les plus utilisés en France.
+
 
 === 1. Compléter le tableau suivant en vérifiant les informations sur le web
 
@@ -19,15 +21,15 @@
   table.cell(fill: fond_titre_table, [*Contenu(s) échangé(s) sur le réseau entre ses utilisateurs*]),
   table.cell(fill: fond_titre_table, [*Peut-on "noter", "liker" ou "aimer" les commentaires ?*]),
   table.cell(fill: fond_titre_table, [*Membres du réseau: contacts, amis, followers ?*]),
-  [facebook], "Messages, photos, vidéos", pointillets, pointillets,
-  [youtube], pointillets, pointillets, pointillets,
-  [whatsapp], pointillets, pointillets, pointillets,
-  [instagram], pointillets, pointillets, pointillets,
-  [tiktok], pointillets, pointillets, pointillets,
-  [snapchat], pointillets, pointillets, pointillets,
-  [x], pointillets, pointillets, [Followers, amis],
-  [linkedin], pointillets, "Oui: bouton j'aime", pointillets,
-  [pinterest], pointillets, pointillets, pointillets,
+  [Facebook], "Messages, photos, vidéos", pointillets, pointillets,
+  [Youtube], pointillets, pointillets, pointillets,
+  [WhatsApp], pointillets, pointillets, pointillets,
+  [Instagram], pointillets, pointillets, pointillets,
+  [TikTok], pointillets, pointillets, pointillets,
+  [Snapchat], pointillets, pointillets, pointillets,
+  [X (Twitter)], pointillets, pointillets, [Followers, amis],
+  [Linkedin], pointillets, "Oui: bouton j'aime", pointillets,
+  [Pinterest], pointillets, pointillets, pointillets,
 )
 
 === 2. Entourer, dans le tableau, le nom des réseaux sociaux que vous utilisez.

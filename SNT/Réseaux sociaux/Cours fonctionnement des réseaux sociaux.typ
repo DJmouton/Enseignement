@@ -4,6 +4,8 @@
 
 #show: doc => template(doc)
 
+#let pointillets = [#v(0.8em) #move(dy: 0.2em ,line(length: 100%, stroke: (dash: "dotted")))]
+
 #surtitre[SNT - Réseaux Sociaux - Partie 1]
 #titre[Fonctionnement des Réseaux Sociaux]
 
@@ -99,41 +101,79 @@
 #let figure_identité_numérique = align(center, cetz.canvas({
   import cetz.draw: line, content
 
-  content((0, 0), text(size: 50pt, emoji.person))
+  content((0, 0), text(size: 20pt, smallcaps("Vous")))
 
-  line((-1, 0.4), (-1.5, 0.4), (-1.5, 2), (-3, 2))
-  line((-1, 0.2), (-1.7, 0.2), (-1.7, 1), (-3, 1))
-  line((-1, 0), (-3, 0))
-  line((-1, -0.2), (-1.7, -0.2), (-1.7, -1), (-3, -1))
-  line((-1, -0.4), (-1.5, -0.4), (-1.5, -2), (-3, -2))
+  let texte_ligne(départ: (0, 0), arrivée: (1, 1), distance_coude: 0.5, titre: "Zoukland", sous_titre: "wsh la zone du sang") = {
 
-  line((+1, 0.4), (+1.5, 0.4), (+1.5, 2), (+3, 2))
-  line((+1, 0.2), (+1.7, 0.2), (+1.7, 1), (+3, 1))
-  line((+1, 0), (+3, 0))
-  line((+1, -0.2), (+1.7, -0.2), (+1.7, -1), (+3, -1))
-  line((+1, -0.4), (+1.5, -0.4), (+1.5, -2), (+3, -2))
+    let (x_départ, y_départ) = départ
+    let (x_arrivée, y_arrivée) = arrivée
 
-  content((-4, 2.2), align(right, text(size: 10pt, weight: "bold","Réputation")))
-  content((-4.7, 1.8), text(size: 8pt,"ce que l'on dit sur moi"))
-  content((-4, 1.2), align(right, text(size: 10pt, weight: "bold","Expression")))
-  content((-4.7, 0.8), text(size: 8pt,"ce que je dis"))
-  content((-4, 0.2), align(right, text(size: 10pt, weight: "bold","Réseau")))
-  content((-4.7, -0.2), text(size: 8pt,"qui je connais"))
-  content((-4, -0.8), align(right, text(size: 10pt, weight: "bold","Certification")))
-  content((-4.7, -1.2), text(size: 8pt,"qui peut certifier mon identité"))
-  content((-4, -1.8), align(right, text(size: 10pt, weight: "bold","Achat")))
-  content((-4.7, -2.2), text(size: 8pt,"ce que j'achète"))
+    line(départ, (x_départ + distance_coude, y_départ), (x_départ + distance_coude, y_arrivée), arrivée, stroke: 0.5pt,name: "ligne")
 
-  content((+4, 2.2), align(right, text(size: 10pt, weight: "bold","Opinion")))
-  content((+4.7, 1.8), text(size: 8pt,"ce que je pense"))
-  content((+4, 1.2), align(right, text(size: 10pt, weight: "bold","Savoir")))
-  content((+4.7, 0.8), text(size: 8pt,"ce que je sais"))
-  content((+4, 0.2), align(right, text(size: 10pt, weight: "bold","Hobbies")))
-  content((+4.7, -0.2), text(size: 8pt,"ce que j'aime"))
-  content((+4, -0.8), align(right, text(size: 10pt, weight: "bold","Avatar")))
-  content((+4.7, -1.2), text(size: 8pt,"comment je me montre"))
-  content((+4, -1.8), align(right, text(size: 10pt, weight: "bold","Profession")))
-  content((+4.7, -2.2), text(size: 8pt,"quel est mon métier et où je travaille"))
+    let orientation = "east"
+    if (x_départ - x_arrivée < 0) {orientation = "west"}
+
+    content("ligne.end", anchor: "south-" + orientation, rect(stroke: none, inset: 3pt, text(size: 10pt, weight: "bold", titre)))
+    content("ligne.end", anchor: "north-" + orientation, rect(stroke: none, inset: 2pt, text(size: 8pt,  sous_titre)))
+  }
+
+  let décallage_départ = 1
+  let coude_base = 1
+  let longueur = 3.5
+  let interligne = 0.15
+  let séparation_verticale = 1
+  
+  // Gauche
+  texte_ligne(départ: (- décallage_départ, interligne * 2), arrivée: (- longueur, (séparation_verticale + interligne) * 2), distance_coude: - coude_base,
+    titre: "Réputation",
+    sous_titre: "ce que l'on dit sur moi"
+  )
+
+  texte_ligne(départ: (- décallage_départ, interligne), arrivée: (- longueur, séparation_verticale + interligne), distance_coude: - (coude_base + interligne),
+    titre: "Expression",
+    sous_titre: "ce que je dis"
+  )
+
+  texte_ligne(départ: (- décallage_départ, 0), arrivée: (- longueur, 0), distance_coude: - coude_base,
+    titre: "Réseau",
+    sous_titre: "qui je connais"
+  )
+
+  texte_ligne(départ: (- décallage_départ, - interligne), arrivée: (- longueur, - (séparation_verticale + interligne)), distance_coude: - (coude_base + interligne),
+    titre: "Certification",
+    sous_titre: "qui peut certifier mon identité"
+  )
+
+  texte_ligne(départ: (- décallage_départ, - interligne * 2), arrivée: (- longueur, - (séparation_verticale + interligne) * 2), distance_coude: - coude_base,
+    titre: "Achat",
+    sous_titre: "ce que j'achète"
+  )
+
+  // Droite
+  texte_ligne(départ: (décallage_départ, interligne * 2), arrivée: (longueur, (séparation_verticale + interligne) * 2), distance_coude: coude_base,
+    titre: "Opinion",
+    sous_titre: "ce que je pense"
+  )
+
+  texte_ligne(départ: (décallage_départ, interligne), arrivée: (longueur, séparation_verticale + interligne), distance_coude: coude_base + interligne,
+    titre: "Savoir",
+    sous_titre: "ce que je sais"
+  )
+
+  texte_ligne(départ: (décallage_départ, 0), arrivée: (longueur, 0), distance_coude: coude_base,
+    titre: "Hobbies",
+    sous_titre: "ce que j'aime"
+  )
+
+  texte_ligne(départ: (décallage_départ, - interligne), arrivée: (longueur, - (séparation_verticale + interligne)), distance_coude: coude_base + interligne,
+    titre: "Avatar",
+    sous_titre: "comment je me montre"
+  )
+
+  texte_ligne(départ: (décallage_départ, - interligne * 2), arrivée: (longueur, - (séparation_verticale + interligne) * 2), distance_coude: coude_base,
+    titre: "Profession",
+    sous_titre: "quel est mon métier et où je travaille"
+  )
 
 }))
 
@@ -142,6 +182,27 @@
   figure_identité_numérique
 )
 
+== Exercice 1: Un exemple de "login social"
+
+Paola, une jeune créatrice du web, veut s'inscrire sur un site de financement participatif pour percevoir des pourboires de la part de ses fans. Le site lui propose deux modes de connexion \[ci-contre\]: une authentification dite "classique", ou une authentification rapide par un processus dit de "login social".
+
+=== 1. Présenter les deux solutions qui s'offrent à elle pour créer son compte.
+
+#pointillets
+#pointillets
+
+=== 2. Quelles informations doivent être fournies pour une authentification classique ?
+
+#pointillets
+
+=== 3. Quelles pourraient être les informations transmises par Google au site de financement participatif si Paola choisit le login social ?
+
+#pointillets
+#pointillets
+
+=== 4. Quelle solution devrait préférer Paola si elle ne tient pas à divulger ces informations ?
+
+#pointillets
 
 = Modèle économique des réseaux sociaux
 
@@ -151,6 +212,55 @@
     Les entreprises de réseaux sociaux génèrent plus de la moitié de leurs revenus grâce à la publicité. La revente de données, l'intégration de jeux en ligne ou encore d'applications génèrent également des revenus. Des algorithmes proposent en outre des *publicités ciblées* selon les relations de l'abonné, ses goûts, ses opinions, son âge, etc.
   ]
 )
+
+== Exercice 2: Quelques extraits d'une politique de confidentialité
+Amir installe une nouvelle application sur son téléphone portable. Pour valider l'inscription, il doit "reconnaître avoir lu" la politique de confidentialité. Curioux, il choisir de parcourir le document:
+
+#block(
+  breakable: true,
+  stroke: 0pt,
+  fill: luma(225),
+  width: 100%,
+  inset: 5pt
+)[
+  "Lorsque vous utilisez nos services \[...\] nous devons ainsi collecter des informations importantes vous concernant, par exemple : votre nom, nom d'utilisateur, mot de passe, adresse, _e-mail_, numéro de téléphone et date de naissance. \[...\] Sur internet, il convient de faire preuve de bon sens : n'envoyez pas de messages ou ne partagez pas de contenu que vous ne voudriez pas que quelqu'un d'autre puisse enregistrer ou partager \[...\].
+  #linebreak()
+  Nous collectons des informations sur votre activité \[...\] la manière dont vous interagissez avec d'autres \[utilisateurs\], tels que leur noms, l'heure et la date de vos échanges, le nombre de  messages que vous échangez avec vos amis, les amis avec lesquels vous échangez le plus de message.
+  #linebreak()
+  Nous collections des informations issues des capteurs de l'appareil, comme les accéléromètres, gyroscopes, boussoles, microphones et la présence ou non d'écouteurs connectés ; et des informations sur vos connexions réseau mobile et sans fil, comme votre numéro de téléphone mobile, votre prestataire de service, votre adresse IP et la puissance du signal. \[...\] nous pouvons - avec votre autorisation - collecter des informations depuis le répertoire de votre appareil \[...\].
+  #linebreak()
+  Lorsque vous visitez notre site web nous collectons également des informations dans les fichiers journaux, entre autres : les pages que vous avez visitées avant ou après avoir accédé à notre site, \[...\].
+  #linebreak()
+  Nous utilisons certaines des informations que nous receuillons à votre sujet pour essayer de choisir les bonnes publicités et vous les envoyer au bon moment. Par exemple, si vous avez cliqué sur une série de publicités pour des jeux-vidéo, nous pourrons coninuer à vous en présenter \[...\]."
+   #align(right, "(Extrait au 30 oct. 2019)")
+]
+
+    === 1. Lire l'extrait et souligner les informations dont dispose l'application concertant le matériel utilisé par Amir.
+
+    === 2. a. Entourer les informations collectées par le site au moment de l'inscription.
+
+    === b. Cette liste est-elle exhaustive ? Justifier.
+
+    #pointillets
+    #pointillets
+
+    === 3. Que pensez-vous de la possibilité, pour l'application, de collecter des informations sur les amis d'Amir ?
+
+    #pointillets
+    #pointillets
+    #pointillets
+
+    === 4. Comment l'application pourra-t-elle proposer à Amir des publicités ciblées ?
+
+    #pointillets
+    #pointillets
+    #pointillets
+
+    === 5. La politique de confidentialité dont vous avez lu un extrait compte plus de 10 900 mots, ce qui représente 40 pages d'un roman. Pourquoi ces documents sont-ils généralement si long ?
+  
+    #pointillets
+    #pointillets
+    #pointillets
 
 = Résumé
 
