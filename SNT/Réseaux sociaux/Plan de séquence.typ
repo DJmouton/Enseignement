@@ -1,12 +1,13 @@
-#import "/Typst templates/style.typ": template, définition, remarque, exercice, exemple, studentline, algorithme, TODO, titre
+#import "/Templates/layouts.typ": SNT, titre, sous_titre
 
-#show: doc => template(doc)
+#show: doc => SNT(doc)
 
 //#import "@preview/fletcher:0.4.5" as fletcher: diagram, node, edge
 
 #titre[SNT: Séquence sur les Réseaux Sociaux]
 
 #outline()
+
 
 = Programme et objectifs
 
@@ -24,6 +25,7 @@
 )
 
 La séquence est composée de 2 parties distinct: une partie "sociale" portant sur les différents aspect sociaux et économique ainsi que la cyberviolence, et une partie "réseau" qui porte sur la modélisation des réseaux sociaux et les impactes de ces relations.
+
 
 = Séances
 
@@ -44,6 +46,7 @@ Les secondes de Champollion ont 1h de SNT une semaine sur deux et 2h l'autre sem
   )
 ]
 
+
 == Séance 1 (2h): Fonctionnement des réseaux sociaux
 
 #planning_séance(
@@ -54,6 +57,8 @@ Les secondes de Champollion ont 1h de SNT une semaine sur deux et 2h l'autre sem
   ..phase_séance("Institutionalisation et exercices", "A, B, C", "45m", "Partie sur les caractéristiques des réseaux sociaux, les modèles économique des réseaux sociaux et l'idendité numérique et sa protection.", "Tableau, fiche de cours"),
   ..fin_séance
 )
+
+
 == Séance 2 (1h): Cyberviolence
 
 #planning_séance(
@@ -62,6 +67,8 @@ Les secondes de Champollion ont 1h de SNT une semaine sur deux et 2h l'autre sem
   ..phase_séance("Institutionalisation", "A, F", "15m", "Partie sur les différentes formes de cyberviolence et de prévention", "Tableau, fiche de cours"),
   ..fin_séance
 )
+
+
 == Séance 3 (2h): Modélisation des réseaux sociaux
 
 #planning_séance(
@@ -71,12 +78,15 @@ Les secondes de Champollion ont 1h de SNT une semaine sur deux et 2h l'autre sem
   ..phase_séance("Institutionalisation et exercices", "B, D, E", "50m", "Partie sur les graphes, la représentation des réseaux sociaux et l'importance des abonnements pour assurer sa confidentialité", "Tableau, fiche de cours"),
   ..fin_séance
 )
+
+
 == Séance 4 (1h): Activité notée
 #planning_séance(
   ..début_séance,
   ..phase_séance("Activité représentation mathématique d'un réseau social", "D, T1", "45m", "Activité avec une matrice d'adjacence, de l'algorithmie et de la programmation. L'activité est ramassée et notée.", "PC, fichier source, IDE"),
   ..fin_séance
 )
+
 
 = Évaluations
 [ TODO ]
@@ -87,6 +97,7 @@ Les secondes de Champollion ont 1h de SNT une semaine sur deux et 2h l'autre sem
 == Quiz modélisation
 
 == Évaluation sommative
+
 
 = Sources
 

@@ -1,39 +1,31 @@
-#import "/Typst templates/style.typ": template, frame, titre, surtitre
-
+#import "/Templates/layouts.typ": SNT, titre, sous_titre
+#import "/Templates/utils.typ": cadre, pointillets
 #import "@preview/cetz:0.2.2"
 
-#show: doc => template(doc)
+#show: doc => SNT(doc)
 
-#let pointillets = [#v(0.8em) #move(dy: 0.2em ,line(length: 100%, stroke: (dash: "dotted")))]
-
-#surtitre[SNT - Réseaux Sociaux - Partie 1]
+#sous_titre[SNT - Réseaux Sociaux - Partie 1]
 #titre[Fonctionnement des Réseaux Sociaux]
 
-#let repères_historiques = frame(
-  title: "Repères historique",
-  body: [
-    #table(
-      stroke: none,
-      inset: 0em,
-      column-gutter: 10pt, 
-      row-gutter: 15pt,
-      columns: (auto, 1fr), 
-      [*1995*], "Naissance d'un des premier réseaux sociaux, Classmates, qui met en relation d'anciens camarades de classe.", 
-      [*2006*], "Apparition de Twitter (désormais X) et ouverture de Facebook au grand public.",
-      [*2009*], "Lancement de la messagerie instantanée WhatsApp",
-      [*2010*], "Multiplication du partage des photos et des vidéos via l'entrée de nouveaux acteurs comme Instagram et Snapchat.",
-    )
-  ]
-)
+#let repères_historiques = cadre(titre: "Repères historique")[
+  #table(
+    stroke: none,
+    inset: 0em,
+    column-gutter: 10pt, 
+    row-gutter: 15pt,
+    columns: (auto, 1fr), 
+    [*1995*], "Naissance d'un des premier réseaux sociaux, Classmates, qui met en relation d'anciens camarades de classe.", 
+    [*2006*], "Apparition de Twitter (désormais X) et ouverture de Facebook au grand public.",
+    [*2009*], "Lancement de la messagerie instantanée WhatsApp",
+    [*2010*], "Multiplication du partage des photos et des vidéos via l'entrée de nouveaux acteurs comme Instagram et Snapchat.",
+  )
+]
 
-#let fun_facts = frame(
-  title: "Le savais-tu ?",
-  body: [
+#let fun_facts = cadre(titre: "Le savais-tu ?")[
 
-    - Si l'ensemble des utilisateurs de X (anciennement Twitter) formaient un pays, ce serait le quatrième plus grand pays au monde.
-    - En 1998, l'agence fédérale américaine qui régit le droit de la consommation aux États-Unis a promulgé le texte COPPA, qui protège les internautes de moins de 13 ans d'une utilisation abusive de leurs informations personnelles à des fins commerciales. Pour éviter toute complication juridique, les réseaux sociaux ont interdit l'inscription avant cet âge.
-  ]
-)
+  - Si l'ensemble des utilisateurs de X (anciennement Twitter) formaient un pays, ce serait le quatrième plus grand pays au monde.
+  - En 1998, l'agence fédérale américaine qui régit le droit de la consommation aux États-Unis a promulgé le texte COPPA, qui protège les internautes de moins de 13 ans d'une utilisation abusive de leurs informations personnelles à des fins commerciales. Pour éviter toute complication juridique, les réseaux sociaux ont interdit l'inscription avant cet âge.
+]
 
 #grid(
   columns: (1fr, 1fr),
@@ -42,16 +34,13 @@
   fun_facts,
 )
 
+
 = Caractéristiques des réseaux sociaux
 
-#frame(
-  title: "L'essentiel",
-  body: [
-    Contrairement à un *réseau informatique*, composé de machines connectées physiquement entre elles, un *réseau social* met en relation des personnes (grâce à des liens d'"amitié") ou encore des entreprises (mise en relation avec le client) de façon virtuelle. 
-    Grâce à des applications dédiées, les usager échangent toutes sortes de contenus numériques: messages, photos, vidéos, sons, ²xetc.
-  ]
-)
-
+#cadre(titre: "L'essentiel")[
+  Contrairement à un *réseau informatique*, composé de machines connectées physiquement entre elles, un *réseau social* met en relation des personnes (grâce à des liens d'"amitié") ou encore des entreprises (mise en relation avec le client) de façon virtuelle. 
+  Grâce à des applications dédiées, les usager échangent toutes sortes de contenus numériques: messages, photos, vidéos, sons, ²xetc.
+]
 
 #let figure_nombre_utilisateurs = align(center, cetz.canvas({
   import cetz.draw: circle, content
@@ -71,7 +60,7 @@
     content((nom, taille_texte * distance_nom_utilisateurs, nom + ".south"), text(size: taille_texte, fill: couleur_texte, [#utilisateurs M]))
   }
 
-  bulle_réseau((-7.2, -0.5), 50, blue, white, "Facebook")
+  bulle_réseau((-7.2, 0), 50, blue, white, "Facebook")
   bulle_réseau((-5, -2), 46.6, red, white, "Youtube")
   bulle_réseau((-3.3, 0), 32, green, black, "Whatsapp")
   bulle_réseau((-2, -2), 30, rgb("#e6008a"), white, "Instagram")
@@ -87,21 +76,18 @@
   figure_nombre_utilisateurs
 )
 
+
 = L'identité numérique et sa protection
 
-#frame(
-  title: "L'essentiel",
-  body: [
-    En ligne, tout comme en société, chaque individu est caractérisé par son *identité numérique*. Toutes les traces que nous laissons sur les réseaux sociaux ont une influence sur la perception qu'ont les autres de nous-même, et forgent notre *e-réputation*.
-    La connection à un réseau social se fait via un processus d'*authentification* par un login et un mot de passe qui sont personnels. Un paramétrage adapté du compte permet de maîtriser la *confidentialité* des données.
-  ]
-)
-
+#cadre(titre: "L'essentiel")[
+  En ligne, tout comme en société, chaque individu est caractérisé par son *identité numérique*. Toutes les traces que nous laissons sur les réseaux sociaux ont une influence sur la perception qu'ont les autres de nous-même, et forgent notre *e-réputation*.
+  La connection à un réseau social se fait via un processus d'*authentification* par un login et un mot de passe qui sont personnels. Un paramétrage adapté du compte permet de maîtriser la *confidentialité* des données.
+]
 
 #let figure_identité_numérique = align(center, cetz.canvas({
   import cetz.draw: line, content
 
-  content((0, 0), text(size: 20pt, smallcaps("Vous")))
+  content((0, 0), text(size: 45pt, emoji.person))
 
   let texte_ligne(départ: (0, 0), arrivée: (1, 1), distance_coude: 0.5, titre: "Zoukland", sous_titre: "wsh la zone du sang") = {
 
@@ -182,36 +168,40 @@
   figure_identité_numérique
 )
 
+
 == Exercice 1: Un exemple de "login social"
 
 Paola, une jeune créatrice du web, veut s'inscrire sur un site de financement participatif pour percevoir des pourboires de la part de ses fans. Le site lui propose deux modes de connexion \[ci-contre\]: une authentification dite "classique", ou une authentification rapide par un processus dit de "login social".
+
 
 === 1. Présenter les deux solutions qui s'offrent à elle pour créer son compte.
 
 #pointillets
 #pointillets
 
+
 === 2. Quelles informations doivent être fournies pour une authentification classique ?
 
 #pointillets
+
 
 === 3. Quelles pourraient être les informations transmises par Google au site de financement participatif si Paola choisit le login social ?
 
 #pointillets
 #pointillets
 
+
 === 4. Quelle solution devrait préférer Paola si elle ne tient pas à divulger ces informations ?
 
 #pointillets
 
+
 = Modèle économique des réseaux sociaux
 
-#frame(
-  title: "L'essentiel",
-  body: [
-    Les entreprises de réseaux sociaux génèrent plus de la moitié de leurs revenus grâce à la publicité. La revente de données, l'intégration de jeux en ligne ou encore d'applications génèrent également des revenus. Des algorithmes proposent en outre des *publicités ciblées* selon les relations de l'abonné, ses goûts, ses opinions, son âge, etc.
-  ]
-)
+#cadre(titre: "L'essentiel")[
+  Les entreprises de réseaux sociaux génèrent plus de la moitié de leurs revenus grâce à la publicité. La revente de données, l'intégration de jeux en ligne ou encore d'applications génèrent également des revenus. Des algorithmes proposent en outre des *publicités ciblées* selon les relations de l'abonné, ses goûts, ses opinions, son âge, etc.
+]
+
 
 == Exercice 2: Quelques extraits d'une politique de confidentialité
 Amir installe une nouvelle application sur son téléphone portable. Pour valider l'inscription, il doit "reconnaître avoir lu" la politique de confidentialité. Curioux, il choisir de parcourir le document:
@@ -237,12 +227,15 @@ Amir installe une nouvelle application sur son téléphone portable. Pour valide
 
     === 1. Lire l'extrait et souligner les informations dont dispose l'application concertant le matériel utilisé par Amir.
 
+
     === 2. a. Entourer les informations collectées par le site au moment de l'inscription.
+
 
     === b. Cette liste est-elle exhaustive ? Justifier.
 
     #pointillets
     #pointillets
+
 
     === 3. Que pensez-vous de la possibilité, pour l'application, de collecter des informations sur les amis d'Amir ?
 
@@ -250,11 +243,13 @@ Amir installe une nouvelle application sur son téléphone portable. Pour valide
     #pointillets
     #pointillets
 
+
     === 4. Comment l'application pourra-t-elle proposer à Amir des publicités ciblées ?
 
     #pointillets
     #pointillets
     #pointillets
+
 
     === 5. La politique de confidentialité dont vous avez lu un extrait compte plus de 10 900 mots, ce qui représente 40 pages d'un roman. Pourquoi ces documents sont-ils généralement si long ?
   
@@ -262,31 +257,25 @@ Amir installe une nouvelle application sur son téléphone portable. Pour valide
     #pointillets
     #pointillets
 
+
 = Résumé
 
-#frame(
-  title: "Définitions à connaître",
-  body: [
-    
-    - Un *réseau social* rassemble des personnes physiques ou morales, mises en relation par l'intermédiaire d'une application dédiée. La connexion à un réseau social s'effectue depuis toute machine connectée à Internet: ordinateur, smartphone, tablette, etc.
-    - Un *abonné actif* est un abonné se connectant régulièrement au réseau social.
-    - L'*identité numérique* est l'ensemble des traces numériques qu'une personne ou une collectivité laisse sur le Web, comme ses coordonnées ou ses goûts.
-    - L'*e-réputation* (ou web-réputation) est la notoriété associée à une identité numérique. Elle peut renvoyer une image positive ou négative de cette identité.
-    - Le *processus d'authentification* permet l'accès individualisé à un réseau à l'aide d'un _login_ et d'un mot de passe.
-  ]
-)
+#cadre(titre: "Définitions à connaître")[
+  
+  - Un *réseau social* rassemble des personnes physiques ou morales, mises en relation par l'intermédiaire d'une application dédiée. La connexion à un réseau social s'effectue depuis toute machine connectée à Internet: ordinateur, smartphone, tablette, etc.
+  - Un *abonné actif* est un abonné se connectant régulièrement au réseau social.
+  - L'*identité numérique* est l'ensemble des traces numériques qu'une personne ou une collectivité laisse sur le Web, comme ses coordonnées ou ses goûts.
+  - L'*e-réputation* (ou web-réputation) est la notoriété associée à une identité numérique. Elle peut renvoyer une image positive ou négative de cette identité.
+  - Le *processus d'authentification* permet l'accès individualisé à un réseau à l'aide d'un _login_ et d'un mot de passe.
+]
 
-/*
-#frame(
-  title: "Ce qu'il faut retenir",
-  body: [
-    #set list(marker: [#sym.square])
-    Il faut être capable de :
-    - définir les termes suivants : réseau social, identité numérique
-    - distinguer plusieurs réseaux sociaux selon leur caractéristiques
-    - identifier les sources de revenu d'une entreprise du réseautage social
-    - expliquer la notion : "Quand c'est gratuit, c'est vous le produit"
-    - comprendre que le paramétrage d'un abonnement influe sur la confidentialité des données personnelles
-  ]
-)
-*/
+
+=== Il faut être capable de :
+
+#set list(marker: [#sym.square])
+
+- définir les termes suivants : réseau social, identité numérique
+- distinguer plusieurs réseaux sociaux selon leur caractéristiques
+- identifier les sources de revenu d'une entreprise du réseautage social
+- expliquer la notion : "Quand c'est gratuit, c'est vous le produit"
+- comprendre que le paramétrage d'un abonnement influe sur la confidentialité des données personnelles
