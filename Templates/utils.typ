@@ -60,8 +60,9 @@
 
 
 // Tu devineras jamais cque ça fait
-#let pointillets = [#v(1em) #move(dy: 0em ,line(length: 100%, stroke: (dash: "dotted")))]
+#let pointillet = [#v(1em) #move(dy: 0em ,line(length: 100%, stroke: (dash: "dotted")))]
 
+#let pointillets(repeat: 1) = for i in range(repeat) [#pointillet]
 
 // Exemples
 #correction(énoncé: smallcaps(lorem(30)))[#lorem(40)]

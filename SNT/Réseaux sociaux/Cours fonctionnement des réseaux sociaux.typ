@@ -46,7 +46,7 @@
   import cetz.draw: circle, content
 
   let ratio_bulle = 0.4
-  let ratio_texte = 10
+  let ratio_texte = 7
   let distance_nom_utilisateurs = 0.6
 
   let bulle_réseau(position, utilisateurs, couleur_bulle, couleur_texte, nom) = {
@@ -206,7 +206,7 @@ Paola, une jeune créatrice du web, veut s'inscrire sur un site de financement p
 == Exercice 2: Quelques extraits d'une politique de confidentialité
 Amir installe une nouvelle application sur son téléphone portable. Pour valider l'inscription, il doit "reconnaître avoir lu" la politique de confidentialité. Curioux, il choisir de parcourir le document:
 
-#block(
+#let extrait_ex2 = block(
   breakable: true,
   stroke: 0pt,
   fill: luma(225),
@@ -225,38 +225,46 @@ Amir installe une nouvelle application sur son téléphone portable. Pour valide
    #align(right, "(Extrait au 30 oct. 2019)")
 ]
 
-    === 1. Lire l'extrait et souligner les informations dont dispose l'application concertant le matériel utilisé par Amir.
+#let questions_ex2 = [
+  === 1. Lire l'extrait et souligner les informations dont dispose l'application concertant le matériel utilisé par Amir.
 
 
-    === 2. a. Entourer les informations collectées par le site au moment de l'inscription.
+  === 2. a. Entourer les informations collectées par le site au moment de l'inscription.
 
 
-    === b. Cette liste est-elle exhaustive ? Justifier.
+  === b. Cette liste est-elle exhaustive ? Justifier.
 
-    #pointillets
-    #pointillets
-
-
-    === 3. Que pensez-vous de la possibilité, pour l'application, de collecter des informations sur les amis d'Amir ?
-
-    #pointillets
-    #pointillets
-    #pointillets
+  #pointillets
+  #pointillets
 
 
-    === 4. Comment l'application pourra-t-elle proposer à Amir des publicités ciblées ?
+  === 3. Que pensez-vous de la possibilité, pour l'application, de collecter des informations sur les amis d'Amir ?
 
-    #pointillets
-    #pointillets
-    #pointillets
+  #pointillets
+  #pointillets
+  #pointillets
 
 
-    === 5. La politique de confidentialité dont vous avez lu un extrait compte plus de 10 900 mots, ce qui représente 40 pages d'un roman. Pourquoi ces documents sont-ils généralement si long ?
-  
-    #pointillets
-    #pointillets
-    #pointillets
+  === 4. Comment l'application pourra-t-elle proposer à Amir des publicités ciblées ?
 
+  #pointillets
+  #pointillets
+  #pointillets
+
+
+  === 5. La politique de confidentialité dont vous avez lu un extrait compte plus de 10 900 mots, ce qui représente 40 pages d'un roman. Pourquoi ces documents sont-ils généralement si long ?
+
+  #pointillets
+  #pointillets
+  #pointillets
+]
+
+#grid(
+  columns: (2fr, 2.3fr),
+  inset: 5pt,
+  extrait_ex2,
+  questions_ex2
+)
 
 = Résumé
 

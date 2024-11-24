@@ -21,11 +21,11 @@ Peut-être aussi utilisé pour n'importe quel contenu
   ) 
 
   set par(
-    justify: true,
+    justify: false,
   )
   set text(
-    font: "",
-    size: 11pt,
+    //font: "OpenDyslexic",
+    size: 10pt,
     lang: "FR"
   )
   
@@ -64,7 +64,7 @@ Peut-être aussi utilisé pour n'importe quel contenu
     ],
   ) 
 
-  show par: set block(below: 1.5em)
+  //show par: set block(below: 1.5em)
   set par(
     justify: true,
     leading: 1.5em,
@@ -73,7 +73,7 @@ Peut-être aussi utilisé pour n'importe quel contenu
   set heading(numbering: "1.1.1.")
   show heading: set block(above: 2em, below: 1.2em)
   set text(
-    font: "",
+    //font: "",
     size: 11pt,
     lang: "FR"
   )
