@@ -4,6 +4,8 @@
 
 #show: doc => SNT(doc)
 
+#set page(header: [2#smallcaps("nde") 3 #h(1fr) 02/12/2024])
+
 #sous_titre[SNT - Réseaux Sociaux - Partie 1]
 #titre[Fonctionnement des Réseaux Sociaux]
 
@@ -39,7 +41,7 @@
 
 #cadre(titre: "L'essentiel")[
   Contrairement à un *réseau informatique*, composé de machines connectées physiquement entre elles, un *réseau social* met en relation des personnes (grâce à des liens d'"amitié") ou encore des entreprises (mise en relation avec le client) de façon virtuelle. 
-  Grâce à des applications dédiées, les usager échangent toutes sortes de contenus numériques: messages, photos, vidéos, sons, ²xetc.
+  Grâce à des applications dédiées, les usager échangent toutes sortes de contenus numériques: messages, photos, vidéos, sons, etc.
 ]
 
 #let figure_nombre_utilisateurs = align(center, cetz.canvas({
@@ -99,66 +101,86 @@
     let orientation = "east"
     if (x_départ - x_arrivée < 0) {orientation = "west"}
 
-    content("ligne.end", anchor: "south-" + orientation, rect(stroke: none, inset: 3pt, text(size: 10pt, weight: "bold", titre)))
-    content("ligne.end", anchor: "north-" + orientation, rect(stroke: none, inset: 2pt, text(size: 8pt,  sous_titre)))
+    content("ligne.end", anchor: "south-" + orientation, rect(stroke: none, inset: (top: 0pt,bottom:6pt, rest:3pt), text(size: 10pt, weight: "bold", titre)))
+    content("ligne.end", anchor: "north-" + orientation, rect(stroke: none, inset: (top: 6pt, bottom: 5pt,rest:2pt), text(size: 8pt,  sous_titre)))
   }
 
   let décallage_départ = 1
   let coude_base = 1
   let longueur = 3.5
   let interligne = 0.15
-  let séparation_verticale = 1
+  let séparation_verticale = 1.2
   
   // Gauche
   texte_ligne(départ: (- décallage_départ, interligne * 2), arrivée: (- longueur, (séparation_verticale + interligne) * 2), distance_coude: - coude_base,
-    titre: "Réputation",
-    sous_titre: "ce que l'on dit sur moi"
+    //titre: "Réputation",
+    //sous_titre: "ce que l'on dit sur moi"
+    titre: "..................................",
+    sous_titre: "..............................................."
   )
 
   texte_ligne(départ: (- décallage_départ, interligne), arrivée: (- longueur, séparation_verticale + interligne), distance_coude: - (coude_base + interligne),
-    titre: "Expression",
-    sous_titre: "ce que je dis"
+    //titre: "Expression",
+    //sous_titre: "ce que je dis"
+    titre: "..................................",
+    sous_titre: "..............................................."
   )
 
   texte_ligne(départ: (- décallage_départ, 0), arrivée: (- longueur, 0), distance_coude: - coude_base,
-    titre: "Réseau",
-    sous_titre: "qui je connais"
+    //titre: "Réseau",
+    //sous_titre: "qui je connais"
+    titre: "..................................",
+    sous_titre: "..............................................."
   )
 
   texte_ligne(départ: (- décallage_départ, - interligne), arrivée: (- longueur, - (séparation_verticale + interligne)), distance_coude: - (coude_base + interligne),
-    titre: "Certification",
-    sous_titre: "qui peut certifier mon identité"
+    //titre: "Certification",
+    //sous_titre: "qui peut certifier mon identité"
+    titre: "..................................",
+    sous_titre: "..............................................."
   )
 
   texte_ligne(départ: (- décallage_départ, - interligne * 2), arrivée: (- longueur, - (séparation_verticale + interligne) * 2), distance_coude: - coude_base,
-    titre: "Achat",
-    sous_titre: "ce que j'achète"
+    //titre: "Achat",
+    //sous_titre: "ce que j'achète"
+    titre: "..................................",
+    sous_titre: "..............................................."
   )
 
   // Droite
   texte_ligne(départ: (décallage_départ, interligne * 2), arrivée: (longueur, (séparation_verticale + interligne) * 2), distance_coude: coude_base,
-    titre: "Opinion",
-    sous_titre: "ce que je pense"
+    //titre: "Opinion",
+    //sous_titre: "ce que je pense"
+    titre: "..................................",
+    sous_titre: "..............................................."
   )
 
   texte_ligne(départ: (décallage_départ, interligne), arrivée: (longueur, séparation_verticale + interligne), distance_coude: coude_base + interligne,
-    titre: "Savoir",
-    sous_titre: "ce que je sais"
+    //titre: "Savoir",
+    //sous_titre: "ce que je sais"
+    titre: "..................................",
+    sous_titre: "..............................................."
   )
 
   texte_ligne(départ: (décallage_départ, 0), arrivée: (longueur, 0), distance_coude: coude_base,
-    titre: "Hobbies",
-    sous_titre: "ce que j'aime"
+    //titre: "Hobbies",
+    //sous_titre: "ce que j'aime"
+    titre: "..................................",
+    sous_titre: "..............................................."
   )
 
   texte_ligne(départ: (décallage_départ, - interligne), arrivée: (longueur, - (séparation_verticale + interligne)), distance_coude: coude_base + interligne,
-    titre: "Avatar",
-    sous_titre: "comment je me montre"
+    //titre: "Avatar",
+    //sous_titre: "comment je me montre"
+    titre: "..................................",
+    sous_titre: "..............................................."
   )
 
   texte_ligne(départ: (décallage_départ, - interligne * 2), arrivée: (longueur, - (séparation_verticale + interligne) * 2), distance_coude: coude_base,
-    titre: "Profession",
-    sous_titre: "quel est mon métier et où je travaille"
+    //titre: "Profession",
+    //sous_titre: "quel est mon métier et où je travaille"
+    titre: "..................................",
+    sous_titre: "..............................................."
   )
 
 }))
@@ -173,27 +195,27 @@
 
 Paola, une jeune créatrice du web, veut s'inscrire sur un site de financement participatif pour percevoir des pourboires de la part de ses fans. Le site lui propose deux modes de connexion \[ci-contre\]: une authentification dite "classique", ou une authentification rapide par un processus dit de "login social".
 
+#let ex1gauche = [
+  === 1. Présenter les deux solutions qui s'offrent à elle pour créer son compte.
 
-=== 1. Présenter les deux solutions qui s'offrent à elle pour créer son compte.
-
-#pointillets
-#pointillets
-
-
-=== 2. Quelles informations doivent être fournies pour une authentification classique ?
-
-#pointillets
+  #pointillets(repeat: 3)
 
 
-=== 3. Quelles pourraient être les informations transmises par Google au site de financement participatif si Paola choisit le login social ?
+  === 2. Quelles informations doivent être fournies pour une authentification classique ?
 
-#pointillets
-#pointillets
+  #pointillets(repeat: 2)
 
+
+  === 3. Quelles pourraient être les informations transmises par Google au site de financement participatif si Paola choisit le login social ?
+
+  #pointillets(repeat: 4)
+]
+
+#grid(columns: 2, ex1gauche, image("loginsocial.png"))
 
 === 4. Quelle solution devrait préférer Paola si elle ne tient pas à divulger ces informations ?
 
-#pointillets
+#pointillets(repeat: 3)
 
 
 = Modèle économique des réseaux sociaux
@@ -234,37 +256,32 @@ Amir installe une nouvelle application sur son téléphone portable. Pour valide
 
   === b. Cette liste est-elle exhaustive ? Justifier.
 
-  #pointillets
-  #pointillets
+  #pointillets(repeat: 4)
 
 
   === 3. Que pensez-vous de la possibilité, pour l'application, de collecter des informations sur les amis d'Amir ?
 
-  #pointillets
-  #pointillets
-  #pointillets
+  #pointillets(repeat: 5)
 
 
   === 4. Comment l'application pourra-t-elle proposer à Amir des publicités ciblées ?
 
-  #pointillets
-  #pointillets
-  #pointillets
+  #pointillets(repeat: 4)
 
-
-  === 5. La politique de confidentialité dont vous avez lu un extrait compte plus de 10 900 mots, ce qui représente 40 pages d'un roman. Pourquoi ces documents sont-ils généralement si long ?
-
-  #pointillets
-  #pointillets
-  #pointillets
 ]
 
+
 #grid(
-  columns: (2fr, 2.3fr),
+  columns: (2.02fr, 2fr),
   inset: 5pt,
   extrait_ex2,
   questions_ex2
 )
+
+=== 5. La politique de confidentialité dont vous avez lu un extrait compte plus de 10 900 mots, ce qui représente 40 pages d'un roman. Pourquoi ces documents sont-ils généralement si long ?
+
+#pointillets(repeat: 3)
+
 
 = Résumé
 

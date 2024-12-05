@@ -60,7 +60,7 @@
 
 
 // Tu devineras jamais cque ça fait
-#let pointillet = [#v(1em) #move(dy: 0em ,line(length: 100%, stroke: (dash: "dotted")))]
+#let pointillet = [#v(1.4em) #move(dy: 0em ,line(length: 100%, stroke: (dash: "dotted")))]
 
 #let pointillets(repeat: 1) = for i in range(repeat) [#pointillet]
 
