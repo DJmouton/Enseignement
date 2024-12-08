@@ -4,7 +4,7 @@
 
 #show: doc => SNT(doc)
 
-#set page(header: [2#smallcaps("nde") 3 #h(1fr) 02/12/2024])
+#set page(header: [2#smallcaps("nde") 6 #h(1fr) 06/12/2024])
 
 #sous_titre[SNT - Réseaux Sociaux - Partie 1]
 #titre[Fonctionnement des Réseaux Sociaux]
@@ -91,7 +91,7 @@
 
   content((0, 0), text(size: 45pt, emoji.person))
 
-  let texte_ligne(départ: (0, 0), arrivée: (1, 1), distance_coude: 0.5, titre: "Zoukland", sous_titre: "wsh la zone du sang") = {
+  let texte_ligne(départ: (0, 0), arrivée: (1, 1), distance_coude: 0.5, titre: "..................................", sous_titre: "...............................................") = {
 
     let (x_départ, y_départ) = départ
     let (x_arrivée, y_arrivée) = arrivée
@@ -101,8 +101,8 @@
     let orientation = "east"
     if (x_départ - x_arrivée < 0) {orientation = "west"}
 
-    content("ligne.end", anchor: "south-" + orientation, rect(stroke: none, inset: (top: 0pt,bottom:6pt, rest:3pt), text(size: 10pt, weight: "bold", titre)))
-    content("ligne.end", anchor: "north-" + orientation, rect(stroke: none, inset: (top: 6pt, bottom: 5pt,rest:2pt), text(size: 8pt,  sous_titre)))
+    content("ligne.end", anchor: "south-" + orientation, rect(stroke: none, inset: 3pt /*(top: 0pt,bottom:6pt, rest:3pt)*/, text(size: 10pt, weight: "bold", titre)))
+    content("ligne.end", anchor: "north-" + orientation, rect(stroke: none, inset: 2pt /*(top: 6pt, bottom: 5pt,rest:2pt)*/, text(size: 8pt,  sous_titre)))
   }
 
   let décallage_départ = 1
@@ -113,74 +113,54 @@
   
   // Gauche
   texte_ligne(départ: (- décallage_départ, interligne * 2), arrivée: (- longueur, (séparation_verticale + interligne) * 2), distance_coude: - coude_base,
-    //titre: "Réputation",
-    //sous_titre: "ce que l'on dit sur moi"
-    titre: "..................................",
-    sous_titre: "..............................................."
+    titre: "Réputation",
+    sous_titre: "ce que l'on dit sur moi"
   )
 
   texte_ligne(départ: (- décallage_départ, interligne), arrivée: (- longueur, séparation_verticale + interligne), distance_coude: - (coude_base + interligne),
-    //titre: "Expression",
-    //sous_titre: "ce que je dis"
-    titre: "..................................",
-    sous_titre: "..............................................."
+    titre: "Expression",
+    sous_titre: "ce que je dis"
   )
 
   texte_ligne(départ: (- décallage_départ, 0), arrivée: (- longueur, 0), distance_coude: - coude_base,
-    //titre: "Réseau",
-    //sous_titre: "qui je connais"
-    titre: "..................................",
-    sous_titre: "..............................................."
+    titre: "Réseau",
+    sous_titre: "qui je connais"
   )
 
   texte_ligne(départ: (- décallage_départ, - interligne), arrivée: (- longueur, - (séparation_verticale + interligne)), distance_coude: - (coude_base + interligne),
-    //titre: "Certification",
-    //sous_titre: "qui peut certifier mon identité"
-    titre: "..................................",
-    sous_titre: "..............................................."
+    titre: "Certification",
+    sous_titre: "qui peut certifier mon identité"
   )
 
   texte_ligne(départ: (- décallage_départ, - interligne * 2), arrivée: (- longueur, - (séparation_verticale + interligne) * 2), distance_coude: - coude_base,
-    //titre: "Achat",
-    //sous_titre: "ce que j'achète"
-    titre: "..................................",
-    sous_titre: "..............................................."
+    titre: "Achat",
+    sous_titre: "ce que j'achète"
   )
 
   // Droite
   texte_ligne(départ: (décallage_départ, interligne * 2), arrivée: (longueur, (séparation_verticale + interligne) * 2), distance_coude: coude_base,
-    //titre: "Opinion",
-    //sous_titre: "ce que je pense"
-    titre: "..................................",
-    sous_titre: "..............................................."
+    titre: "Opinion",
+    sous_titre: "ce que je pense"
   )
 
   texte_ligne(départ: (décallage_départ, interligne), arrivée: (longueur, séparation_verticale + interligne), distance_coude: coude_base + interligne,
-    //titre: "Savoir",
-    //sous_titre: "ce que je sais"
-    titre: "..................................",
-    sous_titre: "..............................................."
+    titre: "Savoir",
+    sous_titre: "ce que je sais"
   )
 
   texte_ligne(départ: (décallage_départ, 0), arrivée: (longueur, 0), distance_coude: coude_base,
-    //titre: "Hobbies",
-    //sous_titre: "ce que j'aime"
-    titre: "..................................",
-    sous_titre: "..............................................."
+    titre: "Hobbies",
+    sous_titre: "ce que j'aime"
   )
 
   texte_ligne(départ: (décallage_départ, - interligne), arrivée: (longueur, - (séparation_verticale + interligne)), distance_coude: coude_base + interligne,
-    //titre: "Avatar",
-    //sous_titre: "comment je me montre"
-    titre: "..................................",
-    sous_titre: "..............................................."
+    titre: "Avatar",
+    sous_titre: "comment je me montre"
   )
 
   texte_ligne(départ: (décallage_départ, - interligne * 2), arrivée: (longueur, - (séparation_verticale + interligne) * 2), distance_coude: coude_base,
-    //titre: "Profession",
-    //sous_titre: "quel est mon métier et où je travaille"
-    titre: "..................................",
-    sous_titre: "..............................................."
+    titre: "Profession",
+    sous_titre: "quel est mon métier et où je travaille"
   )
 
 }))
@@ -198,24 +178,24 @@ Paola, une jeune créatrice du web, veut s'inscrire sur un site de financement p
 #let ex1gauche = [
   === 1. Présenter les deux solutions qui s'offrent à elle pour créer son compte.
 
-  #pointillets(repeat: 3)
+  #pointillets(repeat: 3, section_correction: true)
 
 
   === 2. Quelles informations doivent être fournies pour une authentification classique ?
 
-  #pointillets(repeat: 2)
+  #pointillets(repeat: 2, section_correction: true)
 
 
   === 3. Quelles pourraient être les informations transmises par Google au site de financement participatif si Paola choisit le login social ?
-
-  #pointillets(repeat: 4)
 ]
 
-#grid(columns: 2, ex1gauche, image("loginsocial.png"))
+#grid(columns: 2, ex1gauche, [#rect(inset: 3pt, outset: -3pt, stroke: 1pt, image("loginsocial2.png")) #v(-1em) #align(center, text(style: "italic", "Document: Interface de connection du site"))])
+
+#pointillets(repeat: 3, section_correction: true)
 
 === 4. Quelle solution devrait préférer Paola si elle ne tient pas à divulger ces informations ?
 
-#pointillets(repeat: 3)
+#pointillets(repeat: 3, section_correction: true)
 
 
 = Modèle économique des réseaux sociaux
@@ -256,20 +236,13 @@ Amir installe une nouvelle application sur son téléphone portable. Pour valide
 
   === b. Cette liste est-elle exhaustive ? Justifier.
 
-  #pointillets(repeat: 4)
+  #pointillets(repeat: 4, section_correction: true)
 
 
   === 3. Que pensez-vous de la possibilité, pour l'application, de collecter des informations sur les amis d'Amir ?
 
-  #pointillets(repeat: 5)
-
-
-  === 4. Comment l'application pourra-t-elle proposer à Amir des publicités ciblées ?
-
-  #pointillets(repeat: 4)
-
+  #pointillets(repeat: 5, section_correction: true)
 ]
-
 
 #grid(
   columns: (2.02fr, 2fr),
@@ -278,9 +251,13 @@ Amir installe une nouvelle application sur son téléphone portable. Pour valide
   questions_ex2
 )
 
+  === 4. Comment l'application pourra-t-elle proposer à Amir des publicités ciblées ?
+
+  #pointillets(repeat: 2, section_correction: true)
+
 === 5. La politique de confidentialité dont vous avez lu un extrait compte plus de 10 900 mots, ce qui représente 40 pages d'un roman. Pourquoi ces documents sont-ils généralement si long ?
 
-#pointillets(repeat: 3)
+#pointillets(repeat: 2, section_correction: true)
 
 
 = Résumé

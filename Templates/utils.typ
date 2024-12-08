@@ -60,11 +60,21 @@
 
 
 // Tu devineras jamais cque ça fait
-#let pointillet = [#v(1.4em) #move(dy: 0em ,line(length: 100%, stroke: (dash: "dotted")))]
+#let pointillet = [#v(1em) #move(dy: 0em ,line(length: 100%, stroke: (dash: "dotted")))]
 
-#let pointillets(repeat: 1) = for i in range(repeat) [#pointillet]
-
+#let pointillets(repeat: 1, section_correction: false) = [
+  #if section_correction [
+    #grid(columns: (auto, 1fr), move(dy: 5pt, text(size: 9pt, style: "italic", "Ma réponse : ")), pointillet)
+    #for i in range(repeat - 1) [#pointillet]
+    
+    #grid(columns: (auto, 1fr), move(dy: 5pt, text(size: 9pt, style: "italic", "Correction : ")), pointillet)
+    #for i in range(repeat - 1) [#pointillet]
+  ] else [
+    #for i in range(repeat) [#pointillet]
+  ]
+]
 // Exemples
 #correction(énoncé: smallcaps(lorem(30)))[#lorem(40)]
 #correction(énoncé: lorem(40))[#for i in range(3) [#pointillets]]
 
+#pointillets(repeat: 2)
