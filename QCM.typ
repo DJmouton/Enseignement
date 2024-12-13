@@ -3,17 +3,21 @@
 
 //! Ne pas oublier de mettre à jour
 #show: doc => [
-  #QCM(doc, classe: [2#smallcaps("nde") 3], date: [09/12/2024])
-  #QCM(doc, classe: [2#smallcaps("nde") 3], date: [09/12/2024])
+  #QCM(doc, classe: [2#smallcaps("nde") 6], date: [13/12/2024])
+  #QCM(doc, classe: [2#smallcaps("nde") 6], date: [13/12/2024])
 ]
 
-#titre("QCM 1 - SNT")
+#titre("QCM 2 - SNT")
+10 minutes. Une ou plusieurs réponses possibles pour chaque questions.
 
-#import "/SNT/Réseaux sociaux/Activité charactéristiques et revenus des réseaux sociaux/QCM.typ": QCM as Activité1
+Pas de points pour une bonne réponse non cochée, points en moins pour une mauvaise réponse cochée (pour la question seulement).
+
+
+#import "/SNT/Réseaux sociaux/Cyberviolence/QCM.typ": QCM as Activité1
 
 #Activité1
 
-=== 4. Définir _identité numérique_.
+=== 4. Définir _identité numérique_. (2 points)
 
 #pointillets(repeat: 3)
 
