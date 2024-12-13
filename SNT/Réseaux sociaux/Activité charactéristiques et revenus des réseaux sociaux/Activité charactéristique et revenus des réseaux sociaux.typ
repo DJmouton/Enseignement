@@ -3,6 +3,7 @@
 
 #show: doc => SNT(doc)
 
+//! Ne pas oublier de mettre à jour.
 #set page(header: [2#smallcaps("nde") 3 #h(1fr) 02/12/2024])
 
 #let à_savoir = align(right, [#sym.arrow.r.curve #underline(offset: 0.15em,"À savoir !")])
@@ -16,15 +17,15 @@ En 2024, environ 50,7 millions de Français étaient actifs sur les réseaux soc
 
 === 1. Seul ou en binôme, choisissez _deux_ réseau social et complétez les lignes du tableau suivant en vérifiant les informations sur le web.
 
-#let facebook = [#v(-0.5em) #align(center, image("Activité Charactéristiques/facebook.png", height: 30pt)) #v(-1em) #pointillets()]
-#let whatsapp = [#v(-0.5em) #align(center, image("Activité Charactéristiques/whatsapp.png", height: 30pt)) #v(-1em) #pointillets()]
-#let linkedin = [#v(1em) #align(center, image("Activité Charactéristiques/linkedin.png", height: 13pt))]
-#let youtube = [#v(-0em) #align(center, image("Activité Charactéristiques/youtube.png", height: 20pt)) #v(-0.5em) #pointillets()]
-#let x = [#v(-0em) #align(center, image("Activité Charactéristiques/x.png", height: 20pt)) #v(-0.5em) #pointillets()]
-#let instagram = [#v(-0em) #align(center, image("Activité Charactéristiques/instagram.png", height: 20pt)) #v(-0.5em) #pointillets()]
-#let snapchat = [#v(-0.5em) #align(center, image("Activité Charactéristiques/snapchat.png", height: 30pt)) #v(-1em) #pointillets()]
-#let pinterest = [#v(1em) #align(center, image("Activité Charactéristiques/pinterest.png", height: 13pt))]
-#let tiktok = [#v(-0em) #align(center, image("Activité Charactéristiques/tiktok.png", height: 20pt)) #v(-0.5em) #pointillets()]
+#let facebook = [#v(-0.5em) #align(center, image("./facebook.png", height: 30pt)) #v(-1em) #pointillets()]
+#let whatsapp = [#v(-0.5em) #align(center, image("./whatsapp.png", height: 30pt)) #v(-1em) #pointillets()]
+#let linkedin = [#v(1em) #align(center, image("./linkedin.png", height: 13pt))]
+#let youtube = [#v(-0em) #align(center, image("./youtube.png", height: 20pt)) #v(-0.5em) #pointillets()]
+#let x = [#v(-0em) #align(center, image("./x.png", height: 20pt)) #v(-0.5em) #pointillets()]
+#let instagram = [#v(-0em) #align(center, image("./instagram.png", height: 20pt)) #v(-0.5em) #pointillets()]
+#let snapchat = [#v(-0.5em) #align(center, image("./snapchat.png", height: 30pt)) #v(-1em) #pointillets()]
+#let pinterest = [#v(1em) #align(center, image("./pinterest.png", height: 13pt))]
+#let tiktok = [#v(-0em) #align(center, image("./tiktok.png", height: 20pt)) #v(-0.5em) #pointillets()]
 
 #let fond_titre_table = luma(220)
 #set table.cell(inset: (top: 8pt))
@@ -51,7 +52,7 @@ En 2024, environ 50,7 millions de Français étaient actifs sur les réseaux soc
 
 === 3. Rechercher sur le Web trois sources de revenus des entreprises privées de réseaux sociaux.
 
-#pointillets(repeat: 4)
+#pointillets(repeat: 6)
 
 #à_savoir
 

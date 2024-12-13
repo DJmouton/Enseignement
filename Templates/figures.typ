@@ -72,6 +72,8 @@
   ("kk", "kkl")
 )
 
+/*
+
   // Gauche
   texte_ligne(départ: (- décallage_départ, interligne * 2), arrivée: (- longueur, (séparation_verticale + interligne) * 2), distance_coude: - coude_base,
     titre: "Réputation",
@@ -129,3 +131,5 @@
   caption: "Les parties de l'identité numérique.",
   figure_identité_numérique(parts)
 )
+
+*/

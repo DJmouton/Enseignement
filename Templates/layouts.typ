@@ -86,14 +86,28 @@ Peut-être aussi utilisé pour n'importe quel contenu
 }
 
 
+#let QCM(body, classe: [2#smallcaps("nde") 6], date: [01/01/1970]) = {
+  import "/Templates/layouts.typ": SNT
+
+  SNT([
+    #set page(header: [#classe #h(1fr) #date], numbering: none)
+    
+    #set text(size: 14pt)
+    Prénom: #h(1fr) Nom: #h(1fr)
+    #body
+  ]
+  )
+}
+
+
 #let titre(body) = align(center, text(size: 24pt, smallcaps(body)))
 
 
 #let sous_titre(body) = align(center, text(size: 14pt, smallcaps(body)))
 
 
-// Example
-#let example = [
+// Exemple
+#let exemple = [
 
   #titre([What's up gang])
   #sous_titre([It's a "me", Mario])
@@ -118,11 +132,15 @@ Peut-être aussi utilisé pour n'importe quel contenu
 
 ]
 
-#SNT(example)
+Exemple layout SNT
+
+#SNT(exemple)
 
 #pagebreak(weak:true)
 
-#NSI(example)
+Exemple layout NSI
+
+#NSI(exemple)
 
 
 

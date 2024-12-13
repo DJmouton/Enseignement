@@ -5,7 +5,7 @@
 
 //#set page(header: [2#smallcaps("nde") 3 #h(1fr) 02/12/2024])
 
-#let à_savoir = align(right, [#sym.arrow.r.curve #underline(offset: 0.15em,"À savoir !")])
+Volé de là: https://snt.ababsurdo.fr/la-photographie-numerique/pixelart/
 
 #sous_titre[SNT - Photographie Numérique - Activit]
 #v(-1em)
