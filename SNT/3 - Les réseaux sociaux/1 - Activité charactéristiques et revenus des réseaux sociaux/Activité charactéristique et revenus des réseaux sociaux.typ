@@ -4,7 +4,6 @@
 #show: doc => SNT(doc)
 
 //! Ne pas oublier de mettre à jour.
-#set page(header: [2#smallcaps("nde") 3 #h(1fr) 02/12/2024])
 
 #let à_savoir = align(right, [#sym.arrow.r.curve #underline(offset: 0.15em,"À savoir !")])
 

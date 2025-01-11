@@ -12,12 +12,14 @@ Utilisation:
 
 Peut-être aussi utilisé pour n'importe quel contenu
 */
+#import "/Metadata.typ": classe_snt, date_snt
 
 
 #let SNT(body) = {
   set page(
     paper: "a4",
-    numbering: "1 / 1"
+    numbering: "1 / 1",
+    header: [#classe_snt #h(1fr) #date_snt]
   ) 
 
   set par(

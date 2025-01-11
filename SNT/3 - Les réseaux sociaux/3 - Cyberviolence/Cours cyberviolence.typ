@@ -4,7 +4,6 @@
 #import "@preview/cetz:0.2.2"
 
 #show: doc => SNT(doc)
-#set page(header: [2#smallcaps("nde") 6 #h(1fr) 06/12/2024])
 
 #sous_titre[SNT - Réseaux Sociaux - Partie 2]
 #titre[Cyberviolence]

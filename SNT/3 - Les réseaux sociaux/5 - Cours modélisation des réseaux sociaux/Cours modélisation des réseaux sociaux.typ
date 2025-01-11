@@ -5,8 +5,6 @@
 
 #show: doc => SNT(doc)
 
-#set page(header: [2#smallcaps("nde") 6 #h(1fr) 20/12/2024])
-
 #sous_titre("SNT - Réseaux sociaux - Partie 3")
 #titre("Modalisation des Réseaux Sociaux")
 

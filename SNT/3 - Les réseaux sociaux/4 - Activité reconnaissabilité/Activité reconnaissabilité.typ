@@ -3,13 +3,11 @@
 
 #show: doc => SNT(doc)
 
-#set page(header: [2#smallcaps("nde") 6 #h(1fr) 13/12/2024])
-
 #let à_savoir = align(right, [#sym.arrow.r.curve #underline(offset: 0.15em,"À savoir !")])
 
 
-#sous_titre[SNT - Réseaux Sociaux - Activité 2]
-#titre[Identification des utilisateurs]
+#sous_titre[SNT - Réseaux Sociaux - Activité 3]
+#titre[Reconnaissabilité des utilisateurs]
 #v(1em)
 
 
