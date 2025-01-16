@@ -109,7 +109,8 @@ Peut-être aussi utilisé pour n'importe quel contenu
 
 
 // Exemple
-#let exemple = [
+#let exemple(preface) = [
+  #preface
 
   #titre([What's up gang])
   #sous_titre([It's a "me", Mario])
@@ -134,15 +135,32 @@ Peut-être aussi utilisé pour n'importe quel contenu
 
 ]
 
-Exemple layout SNT
-
-#SNT(exemple)
+#SNT(exemple([Exemple de SNT]))
 
 #pagebreak(weak:true)
 
-Exemple layout NSI
+#NSI(exemple([Exemple de NSI]))
 
-#NSI(exemple)
+#let Fiche_séance(body) = {
+  
+  set page(
+    paper: "a4",
+    numbering: "1 / 1",
+    header: [#classe_snt #h(1fr) #date_snt]
+  ) 
 
-
-
+  set par(
+    justify: false,
+  )
+  set text(
+    //font: "OpenDyslexic",
+    size: 10pt,
+    lang: "FR"
+  )
+  
+  set figure.caption(separator: [ -- ])
+  set figure(supplement: "Figure")
+  show figure: it => [#it #v(0.5em)]
+  
+  [#body]
+}
