@@ -1,2 +1,2 @@
-#let classe_snt = [2#smallcaps("nde") -1]
-#let date_snt = [22/01/2025]
+#let classe_snt = [2#smallcaps("nde") 3]
+#let date_snt = [20/01/2025]
