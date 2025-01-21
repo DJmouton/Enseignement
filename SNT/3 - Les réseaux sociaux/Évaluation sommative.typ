@@ -5,33 +5,34 @@
 
 #show: doc => SNT(doc)
 
-#sous_titre("SNT - Réseaux sociaux")
-#titre("Évaluation")
+Prénom: #h(1fr) Nom: #h(1fr)
 
-- Définir réseau social
-- Décrire comment on représente un réseau social avec un graphe (schéma: que veut dire sommet et arête?)
-- trouver distance entre deux sommet d'un graphe déjà fait, le rayon, le diamètre, le centre 
+#sous_titre("SNT - Réseaux sociaux")
+#titre("Évaluation de séquence")
+
+45 minutes. Merci de répondre à toutes les questions sur le sujet.
+
+Pas de points négatifs par réponse fausse.
 
 #let h_gutter_ex = 1
 #let v_gutter_ex = .5
 #let (manon, chloe, barth, erwan, alex, audrey, maxence, lisa, amandine) = (
-  (-1 * h_gutter_ex, -1 * v_gutter_ex),
+  (-0.5 * h_gutter_ex, -1 * v_gutter_ex),
+  (-1.25 * h_gutter_ex, -2.5 * v_gutter_ex),
+  (-0.2 * h_gutter_ex, -1.5 * v_gutter_ex),
+  (0.25 * h_gutter_ex, 0.5 * v_gutter_ex),
+  (-1.25 * h_gutter_ex, 0.5 * v_gutter_ex),
+  (1 * h_gutter_ex, -2.5 * v_gutter_ex),
   (1 * h_gutter_ex, -1 * v_gutter_ex),
-  (2 * h_gutter_ex, -1 * v_gutter_ex),
-  (0 * h_gutter_ex, 0 * v_gutter_ex),
-  (-1 * h_gutter_ex, 1 * v_gutter_ex),
-  (1 * h_gutter_ex, 1 * v_gutter_ex),
-  (2 * h_gutter_ex, 1 * v_gutter_ex),
-  (3 * h_gutter_ex, 1 * v_gutter_ex),
-  (3 * h_gutter_ex, 2 * v_gutter_ex),
+  (1.5 * h_gutter_ex, 0 * v_gutter_ex),
+  (2 * h_gutter_ex, -1.75 * v_gutter_ex),
 )
-
 #let gros_graphe = diagram({
   let node_stroke = 1.5pt
   let edge_stroke = 1.5pt
   node(manon, "Manon", shape: pill, stroke: node_stroke)
   node(chloe, "Chloe", shape: pill, stroke: node_stroke)
-  node(barth, "Barth", shape: pill, stroke: node_stroke)
+  //node(barth, "Barth", shape: pill, stroke: node_stroke)
   node(erwan, "Erwan", shape: pill, stroke: node_stroke)
   node(alex, "Alex", shape: pill, stroke: node_stroke)
   node(audrey, "Audrey", shape: pill, stroke: node_stroke)
@@ -42,13 +43,13 @@
   edge(manon, maxence, stroke: edge_stroke)
   edge(manon, chloe, stroke: edge_stroke)
   edge(manon, erwan, stroke: edge_stroke)
-  edge(manon, barth, stroke: edge_stroke)
+  //edge(manon, barth, stroke: edge_stroke)
   edge(chloe, maxence, stroke: edge_stroke)
-  edge(chloe, barth, stroke: edge_stroke)
+  //edge(chloe, barth, stroke: edge_stroke)
   edge(chloe, alex, stroke: edge_stroke)
   edge(chloe, manon, stroke: edge_stroke)
-  edge(barth, audrey, stroke: edge_stroke)
-  edge(barth, maxence, stroke: edge_stroke)
+  //edge(barth, audrey, stroke: edge_stroke)
+  //edge(barth, maxence, stroke: edge_stroke)
   edge(erwan, maxence, stroke: edge_stroke)
   edge(erwan, alex, stroke: edge_stroke)
   edge(audrey, amandine, stroke: edge_stroke)
@@ -57,15 +58,71 @@
   edge(maxence, lisa, stroke: edge_stroke)
 })
 
-#gros_graphe
 
+/*
 - Définir identité numérique
 - Donner 3 exemples de ce qui compose une identité numérique
 - citer les sources de revenus d'un réseau social
 - expliquer "quand c'est gratuit c'est vous le produit"
 - Définir la différence entre cyberviolence et cyberharcèlement
+*/
+=== 1) Définir ce qu'est un réseau social. 
+
+#pointillets(repeat: 5)
+
+=== 2) Expliquer comment un réseau social peut être représenté par un graphe. Précisez ce que signifient les termes sommet et arête dans ce contexte.
+
+#pointillets(repeat: 5)
+
+=== 3) À partir du graphe fourni :
+
+#align(center, gros_graphe)
+==== #h(1em) a) Trouvez la distance entre Chloe et Amandine.
+
+#pointillets(repeat: 3)
+
+==== #h(1em) b) Déterminez le rayon, le diamètre et le centre du graphe.
+
+#pointillets(repeat: 8)
+
+=== 4) Définir ce qu'est une identité numérique.
+
+#pointillets(repeat: 4)
+
+=== 5) Donnez trois exemples de ce qui compose une identité numérique.
+
+#pointillets(repeat: 4)
+
+=== 6) Citez trois sources de revenus principales des réseaux sociaux.
+
+#pointillets(repeat: 4)
+
+=== 7) Expliquez la phrase : "Quand c'est gratuit, c'est vous le produit".
+
+#pointillets(repeat: 6)
+
+=== 8) Définir la différence entre cyberviolence et cyberharcèlement.
+
+#pointillets(repeat: 6)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 
 = Attentes
+
+
 
 == Fonctionnement
 #cadre(titre: "Définitions à connaître")[
@@ -116,3 +173,5 @@
 - évaluer le rayon d'un graphe
 - évaluer le diamètre d'un graphe
 - décrire comment l'information présentée par les réseaux sociaux est conditionnée par le choix préalable de ses amis
+
+*/

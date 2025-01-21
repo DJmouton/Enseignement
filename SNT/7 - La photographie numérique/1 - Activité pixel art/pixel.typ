@@ -7,7 +7,7 @@
 
 Volé de là: https://snt.ababsurdo.fr/la-photographie-numerique/pixelart/
 
-#sous_titre[SNT - Photographie Numérique - Activit]
+#sous_titre[SNT - Photographie Numérique - Activité]
 #v(-1em)
 #titre[Pixel Art]
 
