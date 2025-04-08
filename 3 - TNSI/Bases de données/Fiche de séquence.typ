@@ -2,13 +2,11 @@
 
 #show: doc => SNT(doc)
 
-//#import "@preview/fletcher:0.4.5" as fletcher: diagram, node, edge
-
 #set page(flipped: true)
 
-#titre[SNT: Activité de Reconnaissabilité des réseaux sociaux]
+#titre[TNSI - Bases de données]
 
-#sous_titre[Fiche de séance]
+#sous_titre[Fiche de séquence]
 
 = Programme et objectifs
 
@@ -20,11 +18,11 @@
   "Ces concepts permettent d’exprimer les contraintes d’intégrité (domaine, relation et référence).",
   "A",
   "Base de données relationnelle.", 
-  "Distinguer plusieurs réseaux sociaux selon leurs caractéristiques, y compris un ordre de grandeur de leurs nombres d'abonnés. Paramétrer des abonnements pour assurer la confidentialité de données personnelles.", 
+  "Savoir distinguer la structure d’une base de données de son contenu. \nRepérer des anomalies dans le schéma d’une base de données.", 
   "La structure est un ensemble de schémas relationnels qui respecte les contraintes du modèle relationnel. \nLes anomalies peuvent être des redondances de données ou des anomalies d’insertion, de suppression, de mise à jour. \nOn privilégie la manipulation de données nombreuses et réalistes.",
   "B",
   "Système de gestion de bases de données relationnelles.", 
-  "Identifier les sources de revenus des entreprises de réseautage social.", 
+  "dentifier les services rendus par un système de gestion de bases de données relationnelles : persistance des données, gestion des accès concurrents, efficacité de traitement des requêtes, sécurisation des accès.", 
   "Il s’agit de comprendre le rôle et les enjeux des différents services sans en détailler le fonctionnement.",
   "C",
   "Langage SQL : requêtes d’interrogation et de mise à jour d’une base de données.", 
@@ -33,7 +31,7 @@
   "D"
 )
 
-= Séance 1 - Découverte SGBD & Langage SQL
+= Séance 1 - Les bases de données relationnelles & Langage SQL
 
 #sym.arrow Lister les services rendus par un *système de gestion de base de données relationnelles* : persistance des données, gestions des accès concurrents, efficacité du traitement des requêtes, sécurisation des accès.
 
@@ -47,7 +45,7 @@
 #let planning_séance(..args) = [
   #set text(size: 10pt)
   #table(
-    columns: (3fr, 2fr, 1.5fr, 14fr, 3fr, 3fr, 3fr),
+    columns: (auto, auto, auto, 2.5fr, 1fr, 1.5fr, 1fr),
     [*Phase*], [*Objectifs*], [*Durée*], [*Contenu*], [*Posture prof*], [*Posture élève*], [*Supports*],
     ..args,
   )
@@ -56,72 +54,31 @@
 #planning_séance(
   ..phase_séance(
     nom: "Introduction",
-    durée: "5m",
-    contenu: [
-      - *Contexte de l'activité :* deux réseaux sociaux cherchent à correspondre leurs utilisateurs pour échanger des données.
-      - *Création des groupes :* répartir la classe en 2 groupes qui représenteront chacun un réseau social.
-        - Optionel : leur laisser choisir un nom de réseau social;
-        - Variante 1 : S'il y a trop d'élèves, voir pour subdiviser la classe en plus petits groupes (2 ayant le réseau 1, 2 ayant le 2 par exemple).
-        - Variante 2 : Répartir la classe en binôme/trinôme, il doit y avoir autant de groupes ayant le réseau 1 que le 2.
-      - *Distribution du matériel :* il faut avoir pré-coupé la fiche des identités numériques avant de la donner aux groupes. 
-    ],
-    prof: "Explique au tableau, montre le matériel",
-    eleve: "Ecoute",
-    supports: "Matériel en main"
+    objectifs: "A, C",
+    durée: "30m",
+    contenu: "Comprendre le principe des bases de données relationnelles. \nDéfinitions initiales, Clés primaires et étrangères, contraintes d'identité. \nIntérêt d'une BD.",
+    prof: "Cours magistral",
+    eleve: "Ecoutent",
+    supports: "Sujet papier, tableau"
+
   ),
   ..phase_séance(
-    nom: "Schématisation du réseau social",
+    nom: "Découverte SQL",
     objectifs: "D",
-    durée: "20m",
-    contenu: [
-      - Question préalable du choix de type de schéma, idéalement ils arrivent sur une représentation par graphe, mais ne pas leur donner la solution s'ils ne l'ont pas.
-      - Schématisation des identités numériques et leurs relations, possible de le faire individuellement ou sur une feuille commune, mais les groupes doivent se mettre d'accord sur quel est le schéma final du groupe.
-    ],
-    prof: "Passe dans les rangs, oriente les élèves si besoin",
-    eleve: "Font l'activité en groupe",
-    supports: "Matériel + papier stylo"
+    durée: "1h",
+    contenu: "Cours-exercice guidé pour découvrir le SQL en manipulant sur machine.",
+    prof: "Passe dans les rangs pour aider",
+    eleve: "Pratiquent en autonmie",
+    supports: "Sujet papier, SQLite Studio sur machine"
   ),
   ..phase_séance(
-    nom: "Mise en commun des schémas",
-    durée: "10m",
-    contenu: [
-      - Avant de commencer, avoir séparé le tableau en 2 parties (une pour chaque réseau), avec au milieu un tableau pour noter les utilisateurs identifiés.
-      - *Reportage du schéma au tableau :* chaque réseau social vient écrire son schéma au tableau.
-        - Si plusieurs groupes ont le même réseau, seul l'un d'entre eux vient présenter, possiblement avec les autres qui l'aide.
-        - Variante 1 : Au lieu de venir le faire au tableau, faire des paires de groupes (un de chaque réseau) pour qu'ils mettent en commun leurs schéma.
-      - Si les schémas ne sont pas du même modèle (par exemple graphe), essayer de montrer les similitudes et si possible montrer que c'est en fait (représentable) par un graphe. Pas la peine d'expliquer ce qu'est un graphe, juste le montrer.
-    ],
-    prof: "Choisi qui va au tableau, encardre mais n'écrit rien",
-    eleve: "Un par réseau écrit au tableau, les autres écoutent, aident si besoin, remplissent leur feuille",
-    supports: "Tableau, feuille élève"
-  ),
-  ..phase_séance(
-    nom: "Reconnaissance des utilisateurs",
-    objectifs: "A",
-    durée: "10m",
-    contenu: [
-      - Si les élèves ne trouvent pas, voici l'ordre de priorité de reconnaissance des utilisateurs :
-        - Même Login social / Email
-        - Même amis, puis nombre d'amis légèrement différent
-        Montrer la différence de certitude entre ces données, un login social garanti l'identité tandis qu'une relation non. Des même utilisateur peuvent avoir des email différent entre les réseaux. Comme le Sudoku : on fait des hypothèses et au bout d'un moment tout se valide.
-      - Pas besoin de finir le tableau, juste montrer au minimum un exemple des deux types de reconnaissance.
-    ],
-    prof: "Encadre la recherche, donne les réponses si vraiment besoin",
-    eleve: "Lèvent la main pour proposer des liens, remplissent leur feuille",
-    supports: "Tableau, feuille élève"
-  ),
-  ..phase_séance(
-    nom: "Exercices 4, 5 et 6",
-    objectifs: "A, B",
-    durée: "10m",
-    contenu: [
-      - *Exercice 4 :* Login social, email, relations... Login social et email garantissent l'identité, pas les relations. Donner des exemples d'autres identifieurs *unique* (numéro de téléphone, etc...)
-      - *Exercice 5 :* Même utilisateur mais différent email, pas les mêmes amis. On fait parfoit des choix sans être sûr et on voit si c'est cohérent à la fin, priorité aux identifieurs uniques.
-      - *Exercice 6 :* Cela montre que même en étant anonyme et en n'étant pas identifiable seul, nos relations peuvent nous identifier. Eviter d'avoir les mêmes amis sur toutes les plateformes, mais aussi d'utiliser le login social qui est très facilement identifiable.
-    ],
-    prof: "Corrige au tableau, intéroge pour avoir les réponses",
-    eleve: "Corrigent sur leur copies",
-    supports: "Tableau, feuille élève"
+    nom: "Instit.",
+    objectifs: "A, C, D",
+    durée: "30m",
+    contenu: "Récap et institutionalisation avec exercices fait en commun.",
+    prof: "Au tableau, anime le récap",
+    eleve: "Remplissent leur feuille récap et répondent aux exercices",
+    supports: "Feuille récap, tableau"
   )
 )
 
@@ -132,3 +89,40 @@
 - Expliquer les contraintes d'intégrité (domaine, relation et référence)
 - Distinguer la structure d'une base de données de son contenu
 - Repérer les anomalies dans le schéma d'une base de données (redondances de données, anomalies d'insertion, de suppression, de mise à jour)
+
+#planning_séance(
+  ..phase_séance(
+    nom: "Cours",
+    objectifs: "B, C",
+    durée: "30m",
+    contenu: "Comprendre comment concevoir une base de données. \nModèle conceptuel de données (comme UML). \nExplication en détail d'une SGBD",
+    prof: "Cours magistral",
+    eleve: "Ecoutent",
+    supports: "Sujet papier, tableau"
+  ),
+  ..phase_séance(
+    nom: "TP",
+    objectifs: "B, C, D",
+    durée: "1h30",
+    contenu: "TP guidé menant à la conception d'une BD et la manipulation d'une base de données via SQL.",
+    prof: "Passe dans les rangs + fait des remarque quand besoin",
+    eleve: "Autonomie + écoutent quand remarque au tableau",
+    supports: "Sujet papier, tableau, SQLite Studio"
+  )
+)
+
+= Séance 3 - Mini projet BD
+
+#planning_séance(
+  ..phase_séance(
+    nom: "Projet",
+    objectifs: "B, D",
+    durée: "2h",
+    contenu: "Mini projet où il faudra concevoir puis implémenter une base de données."
+  )
+)
+
+= Source
+
+- https://qkzk.xyz/docs/nsi/cours_terminale/bdd/partie_2/
+- https://adrientaudiere.github.io/cours_nsi/#/terminal/bases_de_donnees
