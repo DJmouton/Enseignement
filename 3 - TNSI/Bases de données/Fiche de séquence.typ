@@ -56,7 +56,7 @@
     nom: "Introduction",
     objectifs: "A, C",
     durée: "30m",
-    contenu: "Comprendre le principe des bases de données relationnelles. \nDéfinitions initiales, Clés primaires et étrangères, contraintes d'identité. \nIntérêt d'une BD.",
+    contenu: "Comprendre le principe des bases de données relationnelles. \nDéfinitions initiales, Clés primaires et étrangères, contraintes d'identité. \nIntérêt d'une BDD.",
     prof: "Cours magistral",
     eleve: "Ecoutent",
     supports: "Sujet papier, tableau"
@@ -104,14 +104,14 @@
     nom: "TP",
     objectifs: "B, C, D",
     durée: "1h30",
-    contenu: "TP guidé menant à la conception d'une BD et la manipulation d'une base de données via SQL.",
+    contenu: "TP guidé menant à la conception d'une BDD et la manipulation d'une base de données via SQL.",
     prof: "Passe dans les rangs + fait des remarque quand besoin",
     eleve: "Autonomie + écoutent quand remarque au tableau",
     supports: "Sujet papier, tableau, SQLite Studio"
   )
 )
 
-= Séance 3 - Mini projet BD
+= Séance 3 - Mini projet BDD
 
 #planning_séance(
   ..phase_séance(
