@@ -71,13 +71,16 @@ Peut-être aussi utilisé pour n'importe quel contenu
   )
   set text(
     //font: "OpenDyslexic",
+    font: "DejaVu Sans",
     size: 10pt,
     lang: "FR"
   )
   
+
   set figure.caption(separator: [ -- ])
   set figure(supplement: "Figure")
   show figure: it => [#it #v(0.5em)]
+
   
   [#body]
 }
