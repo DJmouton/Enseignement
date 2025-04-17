@@ -1,48 +1,35 @@
+#import "@preview/fletcher:0.5.7" as fletcher: diagram, node, edge
+#import fletcher.shapes: pill
+
+#import "/Templates/layouts.typ": NSI, titre, sous_titre
+#import "/Templates/utils.typ": cadre
+
+#show: doc => NSI(doc)
+
+#titre[TNSI - Bases de données]
+#show raw: it => box(
+    outset: 0.15em,
+    radius: 2pt,
+    fill: luma(230),
+    it,
+)
+
+#show table.cell.where(y: 0): strong
+#set table(
+  stroke: (x, y) => (
+    if y < 2 { 1pt }
+    else { (top: 0pt, bottom: 1pt, left: 1pt, right: 1pt) }
+  ),
+  align: (x, y) => (
+    if y < 1 { center }
+    else { left }
+  )
+)
+
 = Concevoir une base de donnée
 
 pdf : [pour impression](/uploads/docnsitale/bdd/cours_sql2_print.pdf), [diapo](/uploads/docnsitale/bdd/cours_sql2_slides.pdf)
-/*
-#import "@preview/pintorita:0.1.4"
 
-#show raw.where(lang: "pintora"): it => pintorita.render(style: "default", it.text)
-
-```pintora
-classDiagram
-  class client {
-    id sweetness
-    nom
-    prenom
-    mail
-  }
-```
-*/
-#import "@preview/fletcher:0.5.7" as fletcher: diagram, node, edge
-
-#let class(title, ..keys) = [
-  #title
-  #line(length: 1pt)
-  #for k in #keys {..keys}
-]
-
-#diagram(
-	spacing: (18mm, 10mm),
-	node-stroke: luma(80%),
-	node((0.5,0), class("client", ("c", "d", "e")), name: <d>),
-	node((0,1), [*Node*], name: <n>),
-	node((1,1), [*Edge*], name: <e>),
-
-	edge(<d>, ((), "|-", (0,0.5)), ((), "-|", <n>), <n>, "1!-n!"),
-	edge(<d>, ((), "|-", (0,0.5)), ((), "-|", <e>), <e>, "1!-n?"),
-
-
-	edge("1!-n?"),
-
-	node((1,2), [*Mark*], name: <m>),
-
-	edge(<e>, "-|>", <n>, stroke: teal, label: text(teal)[snap], left),
-
-	edge((rel: (-15pt, 0pt), to: <n>), <d>, "-|>", bend: 40deg, stroke: orange, text(orange)[layout], label-angle: auto)
-)
 
 == Généralités
 
@@ -133,9 +120,15 @@ Plusieurs utilisateurs simultanément
   - est unique: ne peut être le même pour deux entités
 - Se représente par un rectangle, l'identifiant est souligné
 
-![Entité client](/uploads/docnsitale/bdd/fig/entite_client.png "Entité client")
+#let client = table(columns: 70pt, 
+  "client", 
+  underline("id_client"), 
+  "nom", 
+  "prenom", 
+  "mail"
+)
 
-
+#align(center, client)
 
 == MCD: Notion d'Association
 
@@ -144,7 +137,34 @@ Plusieurs utilisateurs simultanément
 - Elle est représentée par un cercle entre entités
    - Exemples: `commande`, `est_inscrit`, `travaille_pour`, `est_marie`, `habite_dans`....
 
-  ![Association commande](/uploads/docnsitale/bdd/fig/client_asso_sans_card.png "Association commande")
+#let produit = table(columns: 70pt, 
+  "produit", 
+  underline("id_produit"), 
+  "libelle", 
+  "couleur", 
+  "prix"
+)
+
+#let association(action, variable) = arguments(
+  grid(
+    stroke: 0pt,
+    grid.cell(inset: 5pt, strong(action)),
+    grid.cell(inset: 5pt, stroke: (top: 1pt), align(left, variable))
+  ),
+  inset: 5pt,
+  stroke: 1pt
+)
+
+#align(center, diagram(
+  node-inset: 0pt,
+  node-shape: rect,
+  edge-stroke: 0.1em,
+	node((0, 0), client, name: <cli>),
+  node((2, 0), shape: pill, ..association("commande", "quantite"), name: <com>),
+  node((4, 0), produit, name: <pro>),
+  edge(<cli>, <com>),
+  edge(<com>, <pro>)
+))
 
 == MCD: Cardinalités
 
@@ -152,36 +172,152 @@ Plusieurs utilisateurs simultanément
 - La valeur minimale est 0 ou 1, la valeur maximale est 1 ou n
 - L'association peut-être hiérarchique (maximum 1 d'un côté, n de l'autre)  ou maillée (maximum n des deux côtés), entre une ou plusieurs entités
 
-![Association commande](/uploads/docnsitale/bdd/fig/asso_client_card.png "Association commande")
+#align(center, diagram(
+  node-inset: 0pt,
+  node-shape: rect,
+  edge-stroke: 0.1em,
+	node((0, 0), client, name: <cli>),
+  node((2, 0), shape: pill, ..association("commande", "quantite"), name: <com>),
+  node((4, 0), produit, name: <pro>),
+  edge(<cli>, <com>, $0,n$),
+  edge(<com>, <pro>, $0,n$)
+))
 
 == MCD: Autres exemples
-![Association est_inscrit](/uploads/docnsitale/bdd/fig/etudiant_sans_card.png "Association est_inscrit")
+
+#let etudiant = table(columns: 70pt, 
+  "etudiant", 
+  underline("id_etudiant"), 
+  "nom", 
+  "prenom", 
+  "mail"
+)
+
+#let etablissement = table(
+  "etablissement", 
+  underline("libelle"), 
+  "adresse"
+)
+
+#align(center, diagram(
+  node-inset: 0pt,
+  node-shape: rect,
+  edge-stroke: 0.1em,
+	node((0, 0), etudiant, name: <etu>),
+  node((2, 0), shape: pill, ..association("est_inscrit", "annee"), name: <com>),
+  node((4, 0), etablissement, name: <eta>),
+  edge(<etu>, <com>),
+  edge(<com>, <eta>)
+))
 
 Un (`min=1, max=1`) étudiant peut être inscrit dans aucune ou plusieurs (`min = 0` `max = n`) universités. 
 
-![Association est_inscrit](/uploads/docnsitale/bdd/fig/etudiant_card.png "Association est_inscrit")
+#align(center, diagram(
+  node-inset: 0pt,
+  node-shape: rect,
+  edge-stroke: 0.1em,
+	node((0, 0), etudiant, name: <etu>),
+  node((2, 0), shape: pill, ..association("est_inscrit", "annee"), name: <com>),
+  node((4, 0), etablissement, name: <eta>),
+  edge(<etu>, <com>, $1, 1$),
+  edge(<com>, <eta>, $0, n$)
+))
 
-![Association est_marie](/uploads/docnsitale/bdd/fig/mariage_sans_card.png "Association est_marie")
+#let individu = table(columns: 70pt, 
+  "individu", 
+  underline("id_individu"), 
+  "nom", 
+  "prenom", 
+  "mail"
+)
+
+#align(center, diagram(
+  node-inset: 0pt,
+  node-shape: rect,
+  edge-stroke: 0.1em,
+	node((0, 0), individu, name: <ind>),
+  node((2, 0), shape: pill, ..association("est_marie", ""), name: <mar>),
+  edge((<ind.east>, 50%, <ind.north-east>), <mar>),
+  edge((<ind.east>, 50%, <ind.south-east>), <mar>)
+))
 
 Un individu peut-être marié à au plus une personne. Il peut ne pas être marié. `min=0, max=0` des deux côtés.
 
-![Association est_marie](/uploads/docnsitale/bdd/fig/mariage_card.png "Association est_marie")
-
-![Association est_divorce](/uploads/docnsitale/bdd/fig/divorce_sans_card.png "Association est_divorce")
+#align(center, diagram(
+  node-inset: 0pt,
+  node-shape: rect,
+  edge-stroke: 0.1em,
+	node((0, 0), individu, name: <ind>),
+  node((2, 0), shape: pill, ..association("est_marie", ""), name: <mar>),
+  edge((<ind.east>, 50%, <ind.north-east>), <mar>, $0, 1$),
+  edge((<ind.east>, 50%, <ind.south-east>), <mar>, $0, 1$)
+))
 
 Un individu peut-être divorcé à plusieurs personnes. Il peut ne pas être divorcé. `min=0, max=n` des deux côtés.
 
-![Association est_divorce](/uploads/docnsitale/bdd/fig/divorce_card.png "Association est_divorce")
+#align(center, diagram(
+  node-inset: 0pt,
+  node-shape: rect,
+  edge-stroke: 0.1em,
+	node((0, 0), individu, name: <ind>),
+  node((2, 0), shape: pill, ..association("est_divorce", ""), name: <mar>),
+  edge((<ind.east>, 50%, <ind.north-east>), <mar>, $0, n$),
+  edge((<ind.east>, 50%, <ind.south-east>), <mar>, $0, n$)
+))
 
-![Association reservation](/uploads/docnsitale/bdd/fig/resa_sans.png "Association reservation")
+#let abonne = table(
+  "abonne", 
+  underline("id_abonne"), 
+  "nom", 
+  "prenom", 
+  "date_fin_abonnement", 
+  "mail", 
+  "tel"
+)
 
-![Association reservation](/uploads/docnsitale/bdd/fig/resa_avec.png "Association reservation")
+#let terrain = table(columns: 70pt, 
+  "terrain", 
+  underline("libelle"), 
+  "type_sport"
+)
 
+#let creneau = table(columns: 70pt, 
+  "creneau", 
+  underline("jour"), 
+  underline("heure")
+)
 
-== Complément sur les cardinalités
+#align(center, diagram(
+  node-inset: 0pt,
+  node-shape: rect,
+  edge-stroke: 0.1em,
+	node((0, 0), abonne, name: <abo>),
+  node((2, 0), shape: pill, ..association("reservation", "utilise"), name: <res>),
+  node((4, 0), terrain, name: <ter>),
+  node((2, 0.8), creneau, name: <cre>),
+  edge((<abo.east>, 50%, <abo.north-east>), <res>),
+  edge((<abo.east>, 50%, <abo.south-east>), <res>),
+  edge(<ter>, <res>),
+  edge(<cre>, <res>)
+))
 
-[http://tony3d3.free.fr/files/Les-Cardinalites.pdf](http://tony3d3.free.fr/files/Les-Cardinalites.pdf)
+#align(center, diagram(
+  node-inset: 0pt,
+  node-shape: rect,
+  edge-stroke: 0.1em,
+	node((0, 0), abonne, name: <abo>),
+  node((2, 0), shape: pill, ..association("reservation", "utilise"), name: <res>),
+  node((4, 0), terrain, name: <ter>),
+  node((2, 0.8), creneau, name: <cre>),
+  edge(<abo>/*(<abo.east>, 50%, <abo.north-east>)*/, <res>, $0, n$),
+  //edge((<abo.east>, 50%, <abo.south-east>), <res>, $0, n$),
+  edge(<ter>, <res>, $0, n$),
+  edge(<cre>, <res>, $0, n$)
+))
 
+/*== Complément sur les cardinalités
+
+[http://tony3d3.free.fr/files/Les-Cardinalites.pdf](http://tony3d3.free.fr/files/Les-Cardinalites.pdf)*/
 
 == Modèle Relationnel
 
@@ -213,14 +349,29 @@ Elle se traduit par la migration de la clé primaire côté n vers une clé étr
 {{< /hint >}}
 
 
-![Association est_inscrit](/uploads/docnsitale/bdd/fig/etudiant_card.png "Association est_inscrit")
-
+#align(center, diagram(
+  node-inset: 0pt,
+  node-shape: rect,
+  edge-stroke: 0.1em,
+	node((0, 0), etudiant, name: <etu>),
+  node((2, 0), shape: pill, ..association("est_inscrit", "annee"), name: <com>),
+  node((4, 0), etablissement, name: <eta>),
+  edge(<etu>, <com>, $1, 1$),
+  edge(<com>, <eta>, $0, n$)
+))
 
 {{< hint info >}}
 On l'indique avec une flêche *de la clé étrangère vers la clé primaire*.
 {{< /hint >}}
 
-![Modèle Relationnel-Lien Hiérarchique](/uploads/docnsitale/bdd/fig/etudiant_MLD.png "Modèle Relationnel-Lien Hiérarchique")
+#align(center, diagram(
+  node-inset: 0pt,
+  node-shape: rect,
+  edge-stroke: 0.1em,
+	node((0, 0), etudiant, name: <etu>),
+  node((4, 0), etablissement, name: <eta>),
+  edge(<etu>, <eta>, "-|>"),
+))
 
 
 === Lien Maillé
@@ -231,35 +382,103 @@ Une association maillée (0-n)-(0-n) donne lieu à la création d'une nouvelle t
 Ces attributs sont aussi des clés étrangères.
 {{< /hint >}}
 
-![Association commande](/uploads/docnsitale/bdd/fig/asso_client_card.png "Association commande")
-
+#align(center, diagram(
+  node-inset: 0pt,
+  node-shape: rect,
+  edge-stroke: 0.1em,
+	node((0, 0), client, name: <cli>),
+  node((2, 0), shape: pill, ..association("commande", "quantite"), name: <com>),
+  node((4, 0), produit, name: <pro>),
+  edge(<cli>, <com>, $0,n$),
+  edge(<com>, <pro>, $0,n$)
+))
 
 {{< hint info >}}
 On l'indique donc avec deux flêches, de la table `relation` vers les tables contenant les clés primaires.
 {{< /hint >}}
 
-![Modèle Relationnel-Lien Maillé](/uploads/docnsitale/bdd/fig/client_asso_MLD.png "Modèle Relationnel-Lien Maillé")
+
+#let commande = table(
+  "commande", 
+  underline(emph("id_client")), 
+  underline(emph("id_produit")), 
+  "quantite"
+)
+
+#align(center, diagram(
+  node-inset: 0pt,
+  node-shape: rect,
+  edge-stroke: 0.1em,
+	node((0, 0), client, name: <cli>),
+  node((2, 0), commande, name: <com>),
+  node((4, 0), produit, name: <pro>),
+  edge(<com>, <cli>, "-|>"),
+  edge(<com>, <pro>, "-|>")
+))
 
 == Autres exemples
 
 === Est marié
 
-![Association est_marie](/uploads/docnsitale/bdd/fig/mariage_card.png "Association est_marie")
+#let individu_bis = table(
+  "individu", 
+  underline("id_individu"), 
+  emph("id_individu_marie"), 
+  "nom", 
+  "prenom", 
+  "mail"
+)
 
-![Modèle Relationnel mariage](/uploads/docnsitale/bdd/fig/mariage_MLD.png "Modèle Relationnel mariage")
+#align(center, diagram(
+  node-inset: 0pt,
+  node-shape: rect,
+  edge-stroke: 0.1em,
+	node((0, 0), individu_bis, name: <ind>),
+  //edge(<ind.east>, (<ind.east>, -25%, <ind.west>), (<ind.south-west>, 125%,<ind.north-east>), (<ind.north>, -25%, <ind.south>), <ind.north>, "-|>"),
+  edge((<ind.east>, 50%, <ind.north-east>), (<ind.east>, 50%, <ind.south-east>), bend: 90deg, "-|>")
+))
 
 === Est divorcé
 
-![Association est_divorce](/uploads/docnsitale/bdd/fig/divorce_card.png "Association est_divorce")
+#let est_divorce = table(
+  "est_divorce", 
+  emph("id_individu"), 
+  emph("id_individu_marie")
+)
 
-![Modèle Relationnel divorce](/uploads/docnsitale/bdd/fig/divorce_MLD.png "Modèle Relationnel divorce")
+#align(center, diagram(
+  node-inset: 0pt,
+  node-shape: rect,
+  edge-stroke: 0.1em,
+	node((0, 0), individu, name: <ind>),
+  node((2, 0), est_divorce, name: <div>),
+  edge(<div.west>, (<ind.east>, 50%, <ind.north-east>), "-|>"),
+  edge(<div.west>, (<ind.east>, 50%, <ind.south-east>), "-|>")
+))
 
 === Réservation
 
-![MCD Categorie](/uploads/docnsitale/bdd/fig/resa_avec.png "MCD Categorie")
+#let reservation = table(
+  "reservation", 
+  underline(emph("id_abonne")), 
+  underline(emph("libelle")),
+  underline(emph("jour")),
+  underline(emph("heure")),
+  "utilise"
+)
 
-
-![Modèle Relationnel Categorie](/uploads/docnsitale/bdd/fig/resa_MLD.png "Modèle Relationnel Categorie")
+#align(center, diagram(
+  node-inset: 0pt,
+  node-shape: rect,
+  edge-stroke: 0.1em,
+	node((0, 0), abonne, name: <abo>),
+  node((2, 0), reservation, name: <res>),
+  node((4, 0), terrain, name: <ter>),
+  node((2, 0.9), creneau, name: <cre>),
+  edge(<res>, <abo>, "-|>"),
+  edge(<res>, <ter>, "-|>"),
+  edge(<res>, <cre>, "-|>")
+))
 
 = Conception à partir d'un csv
 
@@ -321,13 +540,75 @@ En général, il faut faire un travail de "nettoyage" pour pouvoir créer les ta
 
 == MCD possible
 
-![MCD Categorie](/uploads/docnsitale/bdd/fig/categorie.png "MCD Categorie")
+#let ville = table(
+  "ville",
+  underline("code"),
+  "region",
+  "departement",
+  "nom",
+  "coordonnees"
+)
 
+#let genre = table(columns: 70pt,
+  "genre",
+  underline("genre")
+)
 
-![Modèle Relationnel Categorie](/uploads/docnsitale/bdd/fig/categorie_MLD.png "Modèle Relationnel Categorie")
+#let categorie = table(
+  "categorie",
+  underline("categorie")
+)
 
+#align(center, diagram(
+  node-inset: 0pt,
+  node-shape: rect,
+  edge-stroke: 0.1em,
+	node((0, 0), ville, name: <vil>),
+  node((2, 0), shape: pill, ..association("evaluation", "effectif"), name: <eva>),
+  node((4, 0), genre, name: <gen>),
+  node((2, 0.8), categorie, name: <cat>),
+  edge(<vil>, <eva>, $0, n$),
+  edge(<gen>, <eva>, $0, n$),
+  edge(<cat>, <eva>, $0, n$)
+))
 
-![Modèle Relationnel utlisé](/uploads/docnsitale/bdd/fig/shema_final.png "Modèle Relationnel utlisé")
+#let evaluation = table(
+  "evaluation",
+  underline(emph("code")),
+  underline(emph("genre")),
+  underline(emph("categorie")),
+  "effectif"
+)
+
+#align(center, diagram(
+  node-inset: 0pt,
+  node-shape: rect,
+  edge-stroke: 0.1em,
+	node((0, 0), ville, name: <vil>),
+  node((2, 0), evaluation, name: <eva>),
+  node((4, 0), genre, name: <gen>),
+  node((2, 0.9), categorie, name: <cat>),
+  edge(<eva>, <vil>, "-|>"),
+  edge(<eva>, <gen>, "-|>"),
+  edge(<eva>, <cat>, "-|>")
+))
+
+#let evaluation_bis = table(
+  "evaluation",
+  underline("code"),
+  underline("genre"),
+  underline("categorie"),
+  "effectif"
+)
+
+#align(center, diagram(
+  node-inset: 0pt,
+  node-shape: rect,
+  edge-stroke: 0.1em,
+	node((0, 0), ville, name: <vil>),
+  node((2, 0), evaluation_bis, name: <eva>),
+  edge(<vil>, <eva>, $1, infinity$),
+))
 
 = Bilan
 
