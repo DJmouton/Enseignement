@@ -7,12 +7,6 @@
 #show: doc => NSI(doc)
 
 #titre[TNSI - Modélisation et conception d'une base de données]
-#show raw: it => box(
-    outset: 0.15em,
-    radius: 2pt,
-    fill: luma(230),
-    it,
-)
 
 #show table.cell.where(y: 0): strong
 #set table(
@@ -24,6 +18,16 @@
     if y < 1 { center }
     else { left }
   )
+)
+
+#let association(action, variable) = arguments(
+  grid(
+    stroke: 0pt,
+    grid.cell(inset: 5pt, strong(action)),
+    grid.cell(inset: 5pt, stroke: (top: 1pt), align(left, variable))
+  ),
+  inset: 5pt,
+  stroke: 1pt
 )
 
 = Concevoir une base de donnée
@@ -64,16 +68,16 @@
 === Exemple d'une banque (BNP Paribas)
 
 #grid(columns: 2, [
-Grande masse d’informations $8 * 10^6$ clients
+  Grande masse d’informations $8 * 10^6$ clients
 
-- 4 comptes par client, donc $32 * 10^6$ comptes
-- 20 écritures par mois par compte, donc $6.4 * 10^8$ écritures par mois
-], [
-Plusieurs utilisateurs simultanément
+  - 4 comptes par client, donc $32 * 10^6$ comptes
+  - 20 écritures par mois par compte, donc $6.4 * 10^8$ écritures par mois
+  ], [
+  Plusieurs utilisateurs simultanément
 
-- 2140 agences
-- 31.460 collaborateurs
-- des milliers d’accès internet
+  - 2140 agences
+  - 31.460 collaborateurs
+  - des milliers d’accès internet
 ])
 
 == Analyse
@@ -123,15 +127,6 @@ Plusieurs utilisateurs simultanément
   "prix"
 )
 
-#let association(action, variable) = arguments(
-  grid(
-    stroke: 0pt,
-    grid.cell(inset: 5pt, strong(action)),
-    grid.cell(inset: 5pt, stroke: (top: 1pt), align(left, variable))
-  ),
-  inset: 5pt,
-  stroke: 1pt
-)
 #cadre(titre: "Notion d'association")[
   - Les entités peuvent être liées par des associations
   - Une association est une représentation abstraite de la mémorisation d'un lien entre entités
@@ -142,7 +137,7 @@ Plusieurs utilisateurs simultanément
     node-inset: 0pt,
     node-shape: rect,
     edge-stroke: 0.1em,
-    node((0, 10), client, name: <cli>),
+    node((0, 0), client, name: <cli>),
     node((2, 0), shape: pill, ..association("commande", "quantite"), name: <com>),
     node((4, 0), produit, name: <pro>),
     edge(<cli>, <com>),
@@ -324,7 +319,7 @@ Un individu peut-être divorcé à plusieurs personnes. Il peut ne pas être div
 - L'identifiant d'une entité devient la clé primaire de la table (Primary Key)
 
 #cadre(titre: "Lien Hiérarchique")[
-  Une association `(0-n)`--`(0-1)` est un lien hiérarchique.
+  Une association (0-n)-(0-1) est un lien hiérarchique.
 
   Elle se traduit par la migration de la clé primaire côté n vers une clé étrangère (Foreign Key) côté 1
 
@@ -569,7 +564,7 @@ En général, il faut faire un travail de "nettoyage" pour pouvoir créer les ta
 
 #let evaluation_bis = table(
   "evaluation",
-  underline("code"),
+  underline(emph("code")),
   underline("genre"),
   underline("categorie"),
   "effectif"

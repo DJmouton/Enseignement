@@ -18,7 +18,7 @@ Pour tous les exercices qui suivent on utilisera la base de données ci-dessous.
 
 Elle est constituées de quatre relations :
 
-#let a =table(
+#let a = table(
   columns: 5,
   table.cell(colspan: 5, align(center,[*Relation Stations*])),
 [*NomStation*], 	[*Capacite*], 	[*Lieu*], 	[*Region*], 	[*Tarif*],
@@ -27,7 +27,7 @@ Elle est constituées de quatre relations :
 "Victoria" 	,"200" ,	"Seychelles" 	,"Océan Indient" ,	"1500",
 "Courchevel" ,	"400" 	,"Alpes" ,	"Europe" ,	"2200",
 )
-#let b =table(
+#let b = table(
   columns: 3,
 table.cell(colspan: 3, align(center, [*Relation Activités*])),
 [*NomStation*] ,	[*Libelle*] ,	[*Prix*],
@@ -45,7 +45,7 @@ table.cell(colspan: 6, align(center, [*Relation Clients*])),
 "2" ,	"Smith", 	"John" ,	"Londres" 	,"Europe" ,	"12436",
 "3" 	,"Jonhson" 	,"Britney" 	,"New York" 	,"Amérique" ,	"6721",
 )
-#let d =table(
+#let d = table(
   columns: 4,
 
 table.cell(colspan: 4, align(center, [*Relation Séjours*])),
