@@ -6,7 +6,7 @@
 
 #show: doc => NSI(doc)
 
-#titre[TNSI - Bases de données]
+#titre[TNSI - Modélisation et conception d'une base de données]
 #show raw: it => box(
     outset: 0.15em,
     radius: 2pt,
@@ -28,14 +28,10 @@
 
 = Concevoir une base de donnée
 
-pdf : [pour impression](/uploads/docnsitale/bdd/cours_sql2_print.pdf), [diapo](/uploads/docnsitale/bdd/cours_sql2_slides.pdf)
-
-
 == Généralités
 
 === Intérêts d'un Système de Gestion de Base de Données (SGBD)
 
-{{< hint info >}}
 - Assure la persistance des données
 - Structure l'information
 - Permet de trouver rapidement une information
@@ -45,19 +41,17 @@ pdf : [pour impression](/uploads/docnsitale/bdd/cours_sql2_print.pdf), [diapo](/
   - Centralise la sauvegarde et la mise à jour des données
 - Maintient la cohérence des données
   - Non redondance
-  - Contrôle de l'intégrité des données (lors de la saisie, de la mise à jour, de la suppression)
-{{< /hint >}}
-
+  - Contrôle de l'intégrité des données (lors de la saisie, mise à jour, suppression)
 
 === Type de SGBD
 - Bases hiérarchiques (structure arborescente) ou réseau (structure de graphe)
   - navigation entre les données
-
-{{< hint info >}}
+#v(-0.5em)
+#rect(radius: 10pt)[
 - Bases relationnelles
   - Données sous forme de table, langage SQL
-{{< /hint >}}
-
+]
+#v(-0.5em)
 - Bases déductives
   - Intégration d'ensemble de règles, langage DATALOG
 - Bases objet
@@ -65,43 +59,34 @@ pdf : [pour impression](/uploads/docnsitale/bdd/cours_sql2_print.pdf), [diapo](/
 - Bases noSQL
   - Pas de structuration des données
 
-
-=== Exemples de SGBD Relationnels (SGDBR)
-- Access (suite Microsoft Office)
-- [SQlite](https://www.sqlite.org/index.html), libre
-- [PosgreSQL](https://www.postgresql.org/), libre
-- [Oracle](https://www.oracle.com/), non libre
-- [DB2](https://www.ibm.com/analytics/db2), non libre
-- [H2](www.h2database.com), libre 
-
 == Volumétrie
 
-=== Exemple de la banque (BNP Paribas)
+=== Exemple d'une banque (BNP Paribas)
 
+#grid(columns: 2, [
 Grande masse d’informations $8 * 10^6$ clients
 
 - 4 comptes par client, donc $32 * 10^6$ comptes
 - 20 écritures par mois par compte, donc $6.4 * 10^8$ écritures par mois
-
+], [
 Plusieurs utilisateurs simultanément
 
 - 2140 agences
 - 31.460 collaborateurs
 - des milliers d’accès internet
+])
 
 == Analyse
 
-- Travail préalable à la création de la base de données
-
-- Travail complexe et difficile
-- Déterminer les informations qui sont nécessaires à l'application
++ Travail préalable à la création de la base de données
+//- Travail complexe et difficile
++ Déterminer les informations qui sont nécessaires à l'application
   - gestion de la paie, des congés, du stock
   - application web
-
-=== Dictionnaire de données
-- Parmi toutes les informations, on repère les données élémentaires ou propriétés
++ Dictionnaire de données
+  - Parmi toutes les informations, on repère les données élémentaires ou propriétés
   - niveau de granularité dépend du contexte (adresse, client,... )
-- Le dictionnaire de données représente l'ensemble des données élémentaires
+  - Le dictionnaire de données représente l'ensemble des données élémentaires
 
 
 == Modèle Conceptuel de Données: MCD
@@ -109,16 +94,7 @@ Plusieurs utilisateurs simultanément
 - Le MCD est une représentation du système d'informations à l'aide d'entités et d'associations
 - C'est le résultat du travail des analystes, il sert de base à la création de la base de données
 - Peut être lu et compris par des non informaticiens
-- Un MCD est toujours contextuel
-
-== MCD: Notion d'Entité
-
-- Une entité regroupe les propriétés relatives à un même sujet, qui a du sens
-  - Exemple: une voiture, un individu...
-- Comporte un identifiant
-  - peut être composé par une seule ou plusieurs propriétés
-  - est unique: ne peut être le même pour deux entités
-- Se représente par un rectangle, l'identifiant est souligné
+- Un MCD est toujours contextuel //! à préciser la définition
 
 #let client = table(columns: 70pt, 
   "client", 
@@ -128,14 +104,16 @@ Plusieurs utilisateurs simultanément
   "mail"
 )
 
-#align(center, client)
-
-== MCD: Notion d'Association
-
-- Les entités peuvent être liées par des associations
-- Une association est une représentation abstraite de la mémorisation d'un lien entre entités
-- Elle est représentée par un cercle entre entités
-   - Exemples: `commande`, `est_inscrit`, `travaille_pour`, `est_marie`, `habite_dans`....
+#cadre(titre: "Notion d'identité", grid(columns: 2, [
+  - Une entité regroupe les propriétés relatives à un même sujet, qui a du sens
+    - Exemple: une voiture, un individu...
+  - Comporte un identifiant
+    - peut être composé par une seule ou plusieurs propriétés
+    - est unique: ne peut être le même pour deux entités
+  - Se représente par un rectangle, l'identifiant est souligné
+  ], 
+  align(center, client)
+))
 
 #let produit = table(columns: 70pt, 
   "produit", 
@@ -154,36 +132,41 @@ Plusieurs utilisateurs simultanément
   inset: 5pt,
   stroke: 1pt
 )
+#cadre(titre: "Notion d'association")[
+  - Les entités peuvent être liées par des associations
+  - Une association est une représentation abstraite de la mémorisation d'un lien entre entités
+  - Elle est représentée par un cercle entre entités
+    - Exemples: `commande`, `est_inscrit`, `travaille_pour`, `est_marie`, `habite_dans`....
 
-#align(center, diagram(
-  node-inset: 0pt,
-  node-shape: rect,
-  edge-stroke: 0.1em,
-	node((0, 0), client, name: <cli>),
-  node((2, 0), shape: pill, ..association("commande", "quantite"), name: <com>),
-  node((4, 0), produit, name: <pro>),
-  edge(<cli>, <com>),
-  edge(<com>, <pro>)
-))
+  #align(center, diagram(
+    node-inset: 0pt,
+    node-shape: rect,
+    edge-stroke: 0.1em,
+    node((0, 10), client, name: <cli>),
+    node((2, 0), shape: pill, ..association("commande", "quantite"), name: <com>),
+    node((4, 0), produit, name: <pro>),
+    edge(<cli>, <com>),
+    edge(<com>, <pro>)
+  ))
+]
 
-== MCD: Cardinalités
+#cadre(titre: "Cardinalités")[
+  - Les cardinalités précisent le nombre de fois que l'entité peut intervenir dans une association.
+  - La valeur minimale est 0 ou 1, la valeur maximale est 1 ou n
+  - L'association peut-être hiérarchique (maximum 1 d'un côté, n de l'autre)  ou maillée (maximum n des deux côtés), entre une ou plusieurs entités
 
-- Les cardinalités précisent le nombre de fois que l'entité peut intervenir dans une association.
-- La valeur minimale est 0 ou 1, la valeur maximale est 1 ou n
-- L'association peut-être hiérarchique (maximum 1 d'un côté, n de l'autre)  ou maillée (maximum n des deux côtés), entre une ou plusieurs entités
-
-#align(center, diagram(
-  node-inset: 0pt,
-  node-shape: rect,
-  edge-stroke: 0.1em,
-	node((0, 0), client, name: <cli>),
-  node((2, 0), shape: pill, ..association("commande", "quantite"), name: <com>),
-  node((4, 0), produit, name: <pro>),
-  edge(<cli>, <com>, $0,n$),
-  edge(<com>, <pro>, $0,n$)
-))
-
-== MCD: Autres exemples
+  #align(center, diagram(
+    node-inset: 0pt,
+    node-shape: rect,
+    edge-stroke: 0.1em,
+    node((0, 0), client, name: <cli>),
+    node((2, 0), shape: pill, ..association("commande", "quantite"), name: <com>),
+    node((4, 0), produit, name: <pro>),
+    edge(<cli>, <com>, $0,n$),
+    edge(<com>, <pro>, $0,n$)
+  ))
+]
+=== Autres exemples
 
 #let etudiant = table(columns: 70pt, 
   "etudiant", 
@@ -340,63 +323,33 @@ Un individu peut-être divorcé à plusieurs personnes. Il peut ne pas être div
 - Chaque propriété d'une entité devient un attribut
 - L'identifiant d'une entité devient la clé primaire de la table (Primary Key)
 
-=== Lien hiérarchique
+#cadre(titre: "Lien Hiérarchique")[
+  Une association `(0-n)`--`(0-1)` est un lien hiérarchique.
 
-{{< hint info >}}
-Une association `(0-n)`--`(0-1)` est un lien hiérarchique.
+  Elle se traduit par la migration de la clé primaire côté n vers une clé étrangère (Foreign Key) côté 1
 
-Elle se traduit par la migration de la clé primaire côté n vers une clé étrangère (Foreign Key) côté 1
-{{< /hint >}}
+  #align(center, diagram(
+    node-inset: 0pt,
+    node-shape: rect,
+    edge-stroke: 0.1em,
+    node((0, 0), etudiant, name: <etu>),
+    node((2, 0), shape: pill, ..association("est_inscrit", "annee"), name: <com>),
+    node((4, 0), etablissement, name: <eta>),
+    edge(<etu>, <com>, $1, 1$),
+    edge(<com>, <eta>, $0, n$)
+  ))
 
+  On l'indique avec une flêche *de la clé étrangère vers la clé primaire*.
 
-#align(center, diagram(
-  node-inset: 0pt,
-  node-shape: rect,
-  edge-stroke: 0.1em,
-	node((0, 0), etudiant, name: <etu>),
-  node((2, 0), shape: pill, ..association("est_inscrit", "annee"), name: <com>),
-  node((4, 0), etablissement, name: <eta>),
-  edge(<etu>, <com>, $1, 1$),
-  edge(<com>, <eta>, $0, n$)
-))
-
-{{< hint info >}}
-On l'indique avec une flêche *de la clé étrangère vers la clé primaire*.
-{{< /hint >}}
-
-#align(center, diagram(
-  node-inset: 0pt,
-  node-shape: rect,
-  edge-stroke: 0.1em,
-	node((0, 0), etudiant, name: <etu>),
-  node((4, 0), etablissement, name: <eta>),
-  edge(<etu>, <eta>, "-|>"),
-))
-
-
-=== Lien Maillé
-
-{{< hint info >}}
-Une association maillée (0-n)-(0-n) donne lieu à la création d'une nouvelle table dont la clé primaire est l'union des clés primaires des entités qu'elle relie. 
-
-Ces attributs sont aussi des clés étrangères.
-{{< /hint >}}
-
-#align(center, diagram(
-  node-inset: 0pt,
-  node-shape: rect,
-  edge-stroke: 0.1em,
-	node((0, 0), client, name: <cli>),
-  node((2, 0), shape: pill, ..association("commande", "quantite"), name: <com>),
-  node((4, 0), produit, name: <pro>),
-  edge(<cli>, <com>, $0,n$),
-  edge(<com>, <pro>, $0,n$)
-))
-
-{{< hint info >}}
-On l'indique donc avec deux flêches, de la table `relation` vers les tables contenant les clés primaires.
-{{< /hint >}}
-
+  #align(center, diagram(
+    node-inset: 0pt,
+    node-shape: rect,
+    edge-stroke: 0.1em,
+    node((0, 0), etudiant, name: <etu>),
+    node((4, 0), etablissement, name: <eta>),
+    edge(<etu>, <eta>, "-|>"),
+  ))
+]
 
 #let commande = table(
   "commande", 
@@ -404,19 +357,37 @@ On l'indique donc avec deux flêches, de la table `relation` vers les tables con
   underline(emph("id_produit")), 
   "quantite"
 )
+#cadre(titre: "Lien Maillé")[
+  Une association maillée (0-n)-(0-n) donne lieu à la création d'une nouvelle table dont la clé primaire est l'union des clés primaires des entités qu'elle relie. 
 
-#align(center, diagram(
-  node-inset: 0pt,
-  node-shape: rect,
-  edge-stroke: 0.1em,
-	node((0, 0), client, name: <cli>),
-  node((2, 0), commande, name: <com>),
-  node((4, 0), produit, name: <pro>),
-  edge(<com>, <cli>, "-|>"),
-  edge(<com>, <pro>, "-|>")
-))
+  Ces attributs sont aussi des clés étrangères.
 
-== Autres exemples
+  #align(center, diagram(
+    node-inset: 0pt,
+    node-shape: rect,
+    edge-stroke: 0.1em,
+    node((0, 0), client, name: <cli>),
+    node((2, 0), shape: pill, ..association("commande", "quantite"), name: <com>),
+    node((4, 0), produit, name: <pro>),
+    edge(<cli>, <com>, $0,n$),
+    edge(<com>, <pro>, $0,n$)
+  ))
+
+  On l'indique donc avec deux flêches, de la table `relation` vers les tables contenant les clés primaires.
+
+  #align(center, diagram(
+    node-inset: 0pt,
+    node-shape: rect,
+    edge-stroke: 0.1em,
+    node((0, 0), client, name: <cli>),
+    node((2, 0), commande, name: <com>),
+    node((4, 0), produit, name: <pro>),
+    edge(<com>, <cli>, "-|>"),
+    edge(<com>, <pro>, "-|>")
+  ))
+]
+
+=== Autres exemples
 
 === Est marié
 
@@ -482,7 +453,7 @@ On l'indique donc avec deux flêches, de la table `relation` vers les tables con
 
 = Conception à partir d'un csv
 
-== Retour sur l'exemple des catégories socio-professionnelles
+=== Retour sur l'exemple des catégories socio-professionnelles
 
 Dans le cas où on récupère des données réelles, le problème se pose différemment.
 
@@ -494,49 +465,52 @@ En général, il faut faire un travail de "nettoyage" pour pouvoir créer les ta
 
 == Construire une structure optimisée
 
-=== Regrouper les données en tables
-- Mettre dans une même table les données relatives à un même sujet
-- Créer de nouvelles tables pour éviter la redondance des données
-  - Limite les incohérences lors des mises à jour
-  - Facilite la construction des requêtes et améliore la pertinence des résultats
+#cadre(titre: "Regrouper les données en tables")[
+  - Mettre dans une même table les données relatives à un même sujet
+  - Créer de nouvelles tables pour éviter la redondance des données
+    - Limite les incohérences lors des mises à jour
+    - Facilite la construction des requêtes et améliore la pertinence des résultats
+]
 
+#cadre(titre: "Établir les relations entre tables")[
+  - Définir les clés primaires
+    - Uniques et non NULL
+  - Définir les clés étrangères
+    - Référencent les clés primaires
+]
 
-=== Établir les relations entre tables
-- Définir les clés primaires
-  - Uniques et non NULL
-- Définir les clés étrangères
-  - Référencent les clés primaires
-
-=== Définir des colonnes pertinentes
-- Facilité d'interrogation des colonnes
-- Données cohérentes au sein d'une colonne
-- Ne pas conserver des données qui peuvent être calculées
-
+#cadre(titre: "Définir des colonnes pertinentes")[
+  - Facilité d'interrogation des colonnes
+  - Données cohérentes au sein d'une colonne
+  - Ne pas conserver des données qui peuvent être calculées
+]
 
 === Cas des catégories socioprofessionnelles du Nord.
 
-![Fichier d'origine : CSV](/uploads/docnsitale/bdd/fig/categorie_socio_csv.png "Fichier d'origine : CSV")
+#image("categorie_socio_csv.png")
 
 == Construire une structure pertinente
 
-=== Regrouper les données en tables
-- Tables = données relatives à un même sujet
-  - Données sur les villes et sur les effectifs des catégories
+#cadre(titre: "Regrouper les données en tables")[
+  - Tables = données relatives à un même sujet
+    - Données sur les villes et sur les effectifs des catégories
+]
 
-=== Éviter la redondance des colonnes
-- var = Tranche + categorie
-- categorie = abréviation Catégorie socioprofessionnelle
+#cadre(titre: "Éviter la redondance des colonnes")[
+  - var = Tranche + categorie
+  - categorie = abréviation Catégorie socioprofessionnelle
+]
 
+#cadre(titre: "Éviter la redondance des valeurs")[
+  - Les colonnes `departement` et `region` ne contiennent qu'une seule valeur
+  - À conserver uniquement si volonté d'étendre à d'autres données
+]
 
-
-=== Éviter la redondance des valeurs
-- Les colonnes `departement` et `region` ne contiennent qu'une seule valeur
-- À conserver uniquement si volonté d'étendre à d'autres données
-
-=== Données cohérentes
-- Les colonnes Sexe, Tranche, ... contiennent aussi des totaux !
-  - Les totaux peuvent être calculés à l'aide de fonctions et d'agrégats
-- Décomposer `coordonnees` en deux REAL
+#cadre(titre: "Données cohérentes")[
+  - Les colonnes Sexe, Tranche, ... contiennent aussi des totaux !
+    - Les totaux peuvent être calculés à l'aide de fonctions et d'agrégats
+  - Décomposer `coordonnees` en deux REAL
+]
 
 == MCD possible
 
@@ -612,15 +586,17 @@ En général, il faut faire un travail de "nettoyage" pour pouvoir créer les ta
 
 = Bilan
 
-== Quelques remarques
+//== Quelques remarques
 
 - Base de données relationnelle: ensemble de tables, aucun lien physique entre les tables
 - Contraintes d'intégrité :
   - Clé primaire
   - Clé étrangère (contrainte référentielle)
-  - Contrainte de domaine (CHECK prix > 0, CHECK reponse IN ('O','N')...)
-- `JOIN` vs Produit Cartésien: `JOIN` plus efficace
+  - Contrainte de domaine (CHECK prix > 0, CHECK reponse IN ('O','N')...) //! uuum
+- Produit Cartésien vs `JOIN`: `JOIN` plus efficace
 - `JOIN` indépendant des contraintes référentielles
+
+/*
 - Exécution d'une requête:
 
     ```sql
@@ -629,7 +605,6 @@ En général, il faut faire un travail de "nettoyage" pour pouvoir créer les ta
     WHERE attribut_3 > 4 
     ORDER BY attribut_2;
     ```
-
 
 == Sources
 
@@ -643,3 +618,4 @@ Ce cours est librement adapté d'un cours de Lille 1
   - https://fr.wikipedia.org/wiki/Base_de_donn%C3%A9es_relationnelle
   - https://fr.wikipedia.org/wiki/Mod%C3%A8le_relationnel
   - http://www.capa-invest.fr/portfolio/bnp-paribas-bddf/
+*/

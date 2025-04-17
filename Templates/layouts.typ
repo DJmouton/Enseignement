@@ -46,29 +46,32 @@ Peut-être aussi utilisé pour n'importe quel contenu
     header: [
       #context {
         let headings = query(selector(heading).before(here()))
-        if headings.len() < 3 {
-          return
-        }
+        if  headings.len() < 3 { text("") }
         let first = none
         let second = none
-        while headings.len() > 0 and (first == none or second == none) {
+        while headings.len() > 0 {
           let current = headings.pop()
           if second == none {
-            if current.level == 2 {second = current.body}
+            if current.level == 2 { second = current.body }
           }
           else {
-            if current.level == 1 {first = current.body}
+            if current.level == 1 { first = current.body }
           }
         }
-        if first == none or second == none {return}
-        text(size: 8pt, [#first > #second])
+        if first == none or second == none { text("") }
+        else { text(size: 8pt, [#first > #second]) }
       }
     ],
   ) 
 
+  show heading.where(level: 1): set heading(numbering: "1.")
+  show heading.where(level: 2): set heading(numbering: "1.1")
+  show heading.where(level: 3): set heading(numbering: none)
+
   set par(
     justify: false,
   )
+
   set text(
     //font: "OpenDyslexic",
     font: "DejaVu Sans",

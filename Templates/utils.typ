@@ -8,14 +8,14 @@
 
 
 // Cadre pour du contenu avec un titre en haut à gauche
-#let cadre(titre: [Joli cadre], couleur: black, body) = [ 
+#let cadre(titre: [Joli cadre], couleur: black, breakable: false, body) = [ 
   #v(1em)
   #block(
     radius: 1em,
     stroke: couleur,
     inset: 1em,
     width: 100%,
-    breakable: true
+    breakable: breakable
   )[
     // Le titre
     #move(dx: 0pt, dy: -20pt,
@@ -27,7 +27,6 @@
     #v(-2.8em)
     #body
   ]
-  #v(0.5em)
 ]
 
 
