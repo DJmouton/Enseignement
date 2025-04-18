@@ -2,7 +2,7 @@
 #import fletcher.shapes: pill
 
 #import "/Templates/layouts.typ": NSI, titre, sous_titre
-#import "/Templates/utils.typ": cadre
+#import "/Templates/utils.typ": cadre, correction as cor
 
 #show: doc => NSI(doc)
 
@@ -205,9 +205,7 @@ _*Compétence :* Convertir une relation du modèle relationnel au modèle physiq
   On a déjà écrit les requêtes suivantes pour la création des relations Patient, Médecin et Médicament.
 
   Donner l’écriture avec le langage SQL permettant la création des relations _consultation_ et _prescrit_.
-
-  (On pourra se référer à la cheat-sheet SQL donnée en cours pour la création de tables).
-],[
+  ], [
   ```
   CREATE TABLE patient (
       num_secu INT,
@@ -302,7 +300,3 @@ Pendant la phase de conception, toutes les donnée recueillies et spécifiées s
   #v(10em)
 + En déduire le modèle relationnel
 + Donner le code pour créer la relation Facture dans le SQBD SQlite en considérant que la date de facturation ne peut pas être nulle.
-
-#v(1fr)
-
-_Un soucis pendant les vacances ? N'hésitez pas à m'envoyer un mail : maxime.potelberg\@etu.univ-grenoble-alpes.fr_

@@ -8,6 +8,8 @@
 
 #titre[TNSI - Modélisation et conception d'une base de données]
 
+#set pagebreak(weak: true)
+
 #show table.cell.where(y: 0): strong
 #set table(
   stroke: (x, y) => (
@@ -82,12 +84,13 @@
 
 == Analyse
 
-+ Travail préalable à la création de la base de données
+- Travail préalable à la création de la base de données
 //- Travail complexe et difficile
-+ Déterminer les informations qui sont nécessaires à l'application
+- Déterminer les informations qui sont nécessaires à l'application
   - gestion de la paie, des congés, du stock
   - application web
-+ Dictionnaire de données
+
+=== Dictionnaire de données
   - Parmi toutes les informations, on repère les données élémentaires ou propriétés
   - niveau de granularité dépend du contexte (adresse, client,... )
   - Le dictionnaire de données représente l'ensemble des données élémentaires
@@ -98,7 +101,7 @@
 - Le MCD est une représentation du système d'informations à l'aide d'entités et d'associations
 - C'est le résultat du travail des analystes, il sert de base à la création de la base de données
 - Peut être lu et compris par des non informaticiens
-- Un MCD est toujours contextuel //! à préciser la définition
+// - Un MCD est toujours contextuel //! à préciser la définition
 
 #let client = table(columns: 70pt, 
   "client", 
@@ -161,6 +164,8 @@
     edge(<com>, <pro>, $0,n$)
   ))
 ]
+
+#pagebreak()
 === Autres exemples
 
 #let etudiant = table(columns: 70pt, 
@@ -176,7 +181,7 @@
   underline("libelle"), 
   "adresse"
 )
-
+/* 
 #align(center, diagram(
   node-inset: 0pt,
   node-shape: rect,
@@ -187,8 +192,8 @@
   edge(<etu>, <com>),
   edge(<com>, <eta>)
 ))
-
-Un (`min=1, max=1`) étudiant peut être inscrit dans aucune ou plusieurs (`min = 0` `max = n`) universités. 
+ */
+Un (`min = ..., max = ...`) étudiant peut être inscrit dans aucune ou plusieurs (`min = ..., max = ...`) universités. //? 1, 1, 0, n
 
 #align(center, diagram(
   node-inset: 0pt,
@@ -197,8 +202,8 @@ Un (`min=1, max=1`) étudiant peut être inscrit dans aucune ou plusieurs (`min 
 	node((0, 0), etudiant, name: <etu>),
   node((2, 0), shape: pill, ..association("est_inscrit", "annee"), name: <com>),
   node((4, 0), etablissement, name: <eta>),
-  edge(<etu>, <com>, $1, 1$),
-  edge(<com>, <eta>, $0, n$)
+  edge(<etu>, <com>, $.....$), //? $1, 1$),
+  edge(<com>, <eta>, $.....$)  //? $0, n$)
 ))
 
 #let individu = table(columns: 70pt, 
@@ -208,7 +213,7 @@ Un (`min=1, max=1`) étudiant peut être inscrit dans aucune ou plusieurs (`min 
   "prenom", 
   "mail"
 )
-
+/* 
 #align(center, diagram(
   node-inset: 0pt,
   node-shape: rect,
@@ -218,8 +223,8 @@ Un (`min=1, max=1`) étudiant peut être inscrit dans aucune ou plusieurs (`min 
   edge((<ind.east>, 50%, <ind.north-east>), <mar>),
   edge((<ind.east>, 50%, <ind.south-east>), <mar>)
 ))
-
-Un individu peut-être marié à au plus une personne. Il peut ne pas être marié. `min=0, max=0` des deux côtés.
+ */
+Un individu peut-être marié à au plus une personne. Il peut ne pas être marié. `min = ..., max = ...` des deux côtés. //? 0, 1
 
 #align(center, diagram(
   node-inset: 0pt,
@@ -227,11 +232,11 @@ Un individu peut-être marié à au plus une personne. Il peut ne pas être mari
   edge-stroke: 0.1em,
 	node((0, 0), individu, name: <ind>),
   node((2, 0), shape: pill, ..association("est_marie", ""), name: <mar>),
-  edge((<ind.east>, 50%, <ind.north-east>), <mar>, $0, 1$),
-  edge((<ind.east>, 50%, <ind.south-east>), <mar>, $0, 1$)
+  edge((<ind.east>, 50%, <ind.north-east>), <mar>, $.....$), //? $0, 1$),
+  edge((<ind.east>, 50%, <ind.south-east>), <mar>, $.....$) //? $0, 1$)
 ))
 
-Un individu peut-être divorcé à plusieurs personnes. Il peut ne pas être divorcé. `min=0, max=n` des deux côtés.
+Un individu peut-être divorcé à plusieurs personnes. Il peut ne pas être divorcé. `min = ..., max = ...` des deux côtés. //? 0, n
 
 #align(center, diagram(
   node-inset: 0pt,
@@ -239,9 +244,10 @@ Un individu peut-être divorcé à plusieurs personnes. Il peut ne pas être div
   edge-stroke: 0.1em,
 	node((0, 0), individu, name: <ind>),
   node((2, 0), shape: pill, ..association("est_divorce", ""), name: <mar>),
-  edge((<ind.east>, 50%, <ind.north-east>), <mar>, $0, n$),
-  edge((<ind.east>, 50%, <ind.south-east>), <mar>, $0, n$)
+  edge((<ind.east>, 50%, <ind.north-east>), <mar>, $.....$), //? $0, n$),
+  edge((<ind.east>, 50%, <ind.south-east>), <mar>, $.....$) //? $0, n$)
 ))
+
 
 #let abonne = table(
   "abonne", 
@@ -264,7 +270,7 @@ Un individu peut-être divorcé à plusieurs personnes. Il peut ne pas être div
   underline("jour"), 
   underline("heure")
 )
-
+/* 
 #align(center, diagram(
   node-inset: 0pt,
   node-shape: rect,
@@ -273,29 +279,32 @@ Un individu peut-être divorcé à plusieurs personnes. Il peut ne pas être div
   node((2, 0), shape: pill, ..association("reservation", "utilise"), name: <res>),
   node((4, 0), terrain, name: <ter>),
   node((2, 0.8), creneau, name: <cre>),
-  edge((<abo.east>, 50%, <abo.north-east>), <res>),
-  edge((<abo.east>, 50%, <abo.south-east>), <res>),
+  // edge((<abo.east>, 50%, <abo.north-east>), <res>),
+  // edge((<abo.east>, 50%, <abo.south-east>), <res>),
+  edge(<abo>, <res>),
   edge(<ter>, <res>),
   edge(<cre>, <res>)
 ))
+ */
+
+#v(1fr)
 
 #align(center, diagram(
   node-inset: 0pt,
   node-shape: rect,
   edge-stroke: 0.1em,
 	node((0, 0), abonne, name: <abo>),
-  node((2, 0), shape: pill, ..association("reservation", "utilise"), name: <res>),
+  node((2, 0), shape: pill, ..association("reservation", ""), name: <res>),
   node((4, 0), terrain, name: <ter>),
   node((2, 0.8), creneau, name: <cre>),
-  edge(<abo>/*(<abo.east>, 50%, <abo.north-east>)*/, <res>, $0, n$),
-  //edge((<abo.east>, 50%, <abo.south-east>), <res>, $0, n$),
-  edge(<ter>, <res>, $0, n$),
-  edge(<cre>, <res>, $0, n$)
+  edge(<abo>, <res>, $.....$), //? $0, n$),
+  edge(<ter>, <res>, $.....$), //? $0, n$),
+  edge(<cre>, <res>, $.....$), //? $0, n$)
 ))
 
-/*== Complément sur les cardinalités
+#v(1fr)
 
-[http://tony3d3.free.fr/files/Les-Cardinalites.pdf](http://tony3d3.free.fr/files/Les-Cardinalites.pdf)*/
+#pagebreak()
 
 == Modèle Relationnel
 
@@ -319,7 +328,7 @@ Un individu peut-être divorcé à plusieurs personnes. Il peut ne pas être div
 - L'identifiant d'une entité devient la clé primaire de la table (Primary Key)
 
 #cadre(titre: "Lien Hiérarchique")[
-  Une association (0-n)-(0-1) est un lien hiérarchique.
+  Une association $(0,n)$--$(1,1)$ est un lien hiérarchique.
 
   Elle se traduit par la migration de la clé primaire côté n vers une clé étrangère (Foreign Key) côté 1
 
@@ -336,11 +345,20 @@ Un individu peut-être divorcé à plusieurs personnes. Il peut ne pas être div
 
   On l'indique avec une flêche *de la clé étrangère vers la clé primaire*.
 
+#let etudiant_bis = table(columns: 70pt, 
+  "etudiant", 
+  underline("id_etudiant"), 
+  emph("libelle"),
+  "nom", 
+  "prenom", 
+  "mail"
+)
+
   #align(center, diagram(
     node-inset: 0pt,
     node-shape: rect,
     edge-stroke: 0.1em,
-    node((0, 0), etudiant, name: <etu>),
+    node((0, 0), etudiant_bis, name: <etu>),
     node((4, 0), etablissement, name: <eta>),
     edge(<etu>, <eta>, "-|>"),
   ))
@@ -382,6 +400,8 @@ Un individu peut-être divorcé à plusieurs personnes. Il peut ne pas être div
   ))
 ]
 
+Remarque: Dans ce cours, on note les clés primaires en *gras* et les clés étrangères en _italique_. Dans la table *`commande`* ci-dessus, les clés `id_client` et `id_produit` sont primaires et étrangères.
+
 === Autres exemples
 
 === Est marié
@@ -400,16 +420,15 @@ Un individu peut-être divorcé à plusieurs personnes. Il peut ne pas être div
   node-shape: rect,
   edge-stroke: 0.1em,
 	node((0, 0), individu_bis, name: <ind>),
-  //edge(<ind.east>, (<ind.east>, -25%, <ind.west>), (<ind.south-west>, 125%,<ind.north-east>), (<ind.north>, -25%, <ind.south>), <ind.north>, "-|>"),
-  edge((<ind.east>, 50%, <ind.north-east>), (<ind.east>, 50%, <ind.south-east>), bend: 90deg, "-|>")
+  //? edge((<ind.east>, 50%, <ind.north-east>), (<ind.east>, 50%, <ind.south-east>), bend: 90deg, "-|>")
 ))
 
 === Est divorcé
 
 #let est_divorce = table(
   "est_divorce", 
-  emph("id_individu"), 
-  emph("id_individu_marie")
+  emph("id_individu1"), 
+  emph("id_individu2")
 )
 
 #align(center, diagram(
@@ -418,8 +437,8 @@ Un individu peut-être divorcé à plusieurs personnes. Il peut ne pas être div
   edge-stroke: 0.1em,
 	node((0, 0), individu, name: <ind>),
   node((2, 0), est_divorce, name: <div>),
-  edge(<div.west>, (<ind.east>, 50%, <ind.north-east>), "-|>"),
-  edge(<div.west>, (<ind.east>, 50%, <ind.south-east>), "-|>")
+  //? edge(<div.west>, (<ind.east>, 50%, <ind.north-east>), "-|>"),
+  //? edge(<div.west>, (<ind.east>, 50%, <ind.south-east>), "-|>")
 ))
 
 === Réservation
@@ -429,8 +448,7 @@ Un individu peut-être divorcé à plusieurs personnes. Il peut ne pas être div
   underline(emph("id_abonne")), 
   underline(emph("libelle")),
   underline(emph("jour")),
-  underline(emph("heure")),
-  "utilise"
+  underline(emph("heure"))
 )
 
 #align(center, diagram(
@@ -441,9 +459,9 @@ Un individu peut-être divorcé à plusieurs personnes. Il peut ne pas être div
   node((2, 0), reservation, name: <res>),
   node((4, 0), terrain, name: <ter>),
   node((2, 0.9), creneau, name: <cre>),
-  edge(<res>, <abo>, "-|>"),
-  edge(<res>, <ter>, "-|>"),
-  edge(<res>, <cre>, "-|>")
+  //? edge(<res>, <abo>, "-|>"),
+  //? edge(<res>, <ter>, "-|>"),
+  //? edge(<res>, <cre>, "-|>")
 ))
 
 = Conception à partir d'un csv
@@ -509,6 +527,7 @@ En général, il faut faire un travail de "nettoyage" pour pouvoir créer les ta
 
 == MCD possible
 
+//? Les 3 tables
 #let ville = table(
   "ville",
   underline("code"),
@@ -576,41 +595,9 @@ En général, il faut faire un travail de "nettoyage" pour pouvoir créer les ta
   edge-stroke: 0.1em,
 	node((0, 0), ville, name: <vil>),
   node((2, 0), evaluation_bis, name: <eva>),
-  edge(<vil>, <eva>, $1, infinity$),
+  edge(<vil>, <eva>, $1,n$),
 ))
 
-= Bilan
+#v(1fr)
 
-//== Quelques remarques
-
-- Base de données relationnelle: ensemble de tables, aucun lien physique entre les tables
-- Contraintes d'intégrité :
-  - Clé primaire
-  - Clé étrangère (contrainte référentielle)
-  - Contrainte de domaine (CHECK prix > 0, CHECK reponse IN ('O','N')...) //! uuum
-- Produit Cartésien vs `JOIN`: `JOIN` plus efficace
-- `JOIN` indépendant des contraintes référentielles
-
-/*
-- Exécution d'une requête:
-
-    ```sql
-    SELECT DISTINCT attribut_1, attribut_2
-    FROM table1
-    WHERE attribut_3 > 4 
-    ORDER BY attribut_2;
-    ```
-
-== Sources
-
-Ce cours est librement adapté d'un cours de Lille 1
-
-- Livres
-  - Des Bases de Données à l'Internet, *Philippe Mathieu*, _Vuibert_
-  - Bases de Données, de la modélisation au SQL, *Laurent Audibert*, _Ellipses_
-
-- Sources: articles Wikipedia
-  - https://fr.wikipedia.org/wiki/Base_de_donn%C3%A9es_relationnelle
-  - https://fr.wikipedia.org/wiki/Mod%C3%A8le_relationnel
-  - http://www.capa-invest.fr/portfolio/bnp-paribas-bddf/
-*/
+_Un soucis pendant les vacances ? N'hésitez pas à m'envoyer un mail : maxime.potelberg\@etu.univ-grenoble-alpes.fr_
