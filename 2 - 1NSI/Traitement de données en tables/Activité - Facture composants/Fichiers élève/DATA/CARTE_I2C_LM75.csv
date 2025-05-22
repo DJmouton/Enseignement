@@ -1,0 +1,17 @@
+Category,Reference,Value
+Resistors,"R1",10k
+Resistors,"R2",10k
+Resistors,"R3",150
+Resistors,"R4",150
+Integrated Circuits,"U3",LM75
+Miscellaneous,"J1",I2C_VOX
+Miscellaneous,"J2",I2C_VOX
+Miscellaneous,"J3",BVIS3
+Miscellaneous,"JP1",JUMPER
+Miscellaneous,"JP2",JUMPER
+Miscellaneous,"JP3",JUMPER2
+Miscellaneous,"JP4",JUMPER2
+Miscellaneous,"JP5",JUMPER2
+Miscellaneous,"PTOS",PTEST
+Miscellaneous,"PTSCL",PTEST
+Miscellaneous,"PTSDA",PTEST

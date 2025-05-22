@@ -1,0 +1,24 @@
+Category,Reference,Value
+Resistors,"R1",10k
+Resistors,"R2",10k
+Resistors,"R3",150
+Resistors,"R4",150
+Capacitors,"C1",10nF
+Capacitors,"C2",100nF
+Integrated Circuits,"U2",PCF8591
+Miscellaneous,"J1",I2C_VOX
+Miscellaneous,"J2",I2C_VOX
+Miscellaneous,"J3",BVIS2
+Miscellaneous,"J4",BVIS2
+Miscellaneous,"J5",BVIS2
+Miscellaneous,"J7",BVIS2
+Miscellaneous,"J6",BVIS3
+Miscellaneous,"JP1",JUMPER
+Miscellaneous,"JP2",JUMPER
+Miscellaneous,"JP3",JUMPER2
+Miscellaneous,"JP4",JUMPER2
+Miscellaneous,"JP5",JUMPER2
+Miscellaneous,"JP6",JUMPER2
+Miscellaneous,"OSC",PTEST
+Miscellaneous,"PTSCL",PTEST
+Miscellaneous,"PTSDA",PTEST

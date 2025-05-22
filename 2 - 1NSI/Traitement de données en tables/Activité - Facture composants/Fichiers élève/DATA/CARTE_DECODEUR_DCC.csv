@@ -1,0 +1,41 @@
+Category,Reference,Value
+Resistors,"R1",220k
+Resistors,"R2",330
+Resistors,"R4",330
+Resistors,"R5",330
+Resistors,"R6",330
+Resistors,"R7",330
+Resistors,"R8",330
+Resistors,"R3",10k
+Capacitors,"C1",10uF
+Capacitors,"C2",100nF
+Capacitors,"C4",100nF
+Capacitors,"C3",1uF
+Integrated Circuits,"U1",78XX
+Integrated Circuits,"U2",ATMEGA8
+Integrated Circuits,"U3",ULN2803
+Diodes,"D1",1N4001
+Diodes,"D2",1N4001
+Diodes,"D3",1N4001
+Diodes,"D4",1N4001
+Miscellaneous,"DO_1",D2MM
+Miscellaneous,"DO_2",D2MM
+Miscellaneous,"DO_3",D2MM
+Miscellaneous,"J1",PROG-ATMEL
+Miscellaneous,"J2",BVIS3
+Miscellaneous,"J3",BVIS3
+Miscellaneous,"J11",BVIS3
+Miscellaneous,"J4",BVIS2
+Miscellaneous,"J5",BVIS2
+Miscellaneous,"J6",BVIS2
+Miscellaneous,"J10",BVIS2
+Miscellaneous,"J12",BVIS2
+Miscellaneous,"J7",STRAP-2
+Miscellaneous,"J8",STRAP-2
+Miscellaneous,"J9",STRAP-2
+LED,"LED1",VERTE
+LED,"LEDO",ORANGE
+LED,"LEDR",ROUGE
+LED,"LEDV",VERTE
+Miscellaneous,"PT1",PT
+Miscellaneous,"PT2",PT

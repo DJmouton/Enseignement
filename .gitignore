@@ -1,3 +1,2 @@
-old/
-Templates/opendyslexic/
-/QCM.pdf
+*venv*
+*.pdf

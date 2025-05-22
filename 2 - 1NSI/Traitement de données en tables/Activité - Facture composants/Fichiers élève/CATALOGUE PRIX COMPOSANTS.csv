@@ -1,0 +1,39 @@
+Category,Value,Supplier reference,Supplier,PUHT
+Capacitors,10uF,1144640,Farnell,0.345
+Capacitors,100nF,3322180,Farnell,0.142
+Capacitors,10nF,1457684,Farnell,0.345
+Capacitors,1uF,8126933,Farnell,0.134
+Diodes,1N4001,1458986,Farnell,0.191
+Diodes,1N4004,2335181,Farnell,0.159
+Diodes,MBR1545,1857520,Farnell,0.587
+Integrated Circuits,78XX,1467758,Farnell,0.437
+Integrated Circuits,ATMEGA8,9171207,Farnell,4.2
+Integrated Circuits,PCF8591,2400442,Farnell,3.09
+Integrated Circuits,ULN2803,1094428,Farnell,1.23
+Integrated Circuits,PCF8574,3124744,Farnell,1.22
+Integrated CircuitsDATA/,LM75,3009039,Farnell,2.27
+Integrated Circuits,7805,1467758,Farnell,0.437
+LED,VERTE,1003214,Farnell,0.247
+LED,ROUGE,1003376,Farnell,0.247
+LED,ORANGE,1003212,Farnell,0.405
+LED,JAUNE,1003213,Farnell,0.247
+Miscellaneous,MYAVR_M,,Stock,1.5
+Miscellaneous,VARISTOR,204-1851,Radiospares,1.22
+Miscellaneous,JUMPER2,,Stock,0.25
+Miscellaneous,D2MM,,Stock,0.12
+Miscellaneous,SIL20F,9728880,Farnell,4.22
+Miscellaneous,PTEST,,Stock,0.12
+Miscellaneous,BVIS2,3041529,Farnell,0.763
+Miscellaneous,PROG-ATMEL,,Stock,1.6
+Miscellaneous,BVIS3,1715734,Farnell,1.62
+Miscellaneous,STRAP-2,,Stock,0.3
+Miscellaneous,TBLOCK-M2,189-5966,Radiospares,4.94
+Miscellaneous,BPKSA,959698,Farnell,1.1
+Miscellaneous,I2C_VOX,,Stock,0.45
+Miscellaneous,JUMPER,,Stock,0.23
+Miscellaneous,15A,,Stock,0.5
+Miscellaneous ,PT,,Stock,0.34
+Resistors,150,9464638,Farnell,0.0529
+Resistors,330,9475931,Farnell,0.058
+Resistors,10k,1099988,Farnell,0.051
+Resistors,220k,9340220,Farnell,0.0543
